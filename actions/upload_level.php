@@ -23,7 +23,7 @@ if(count($result['error']) == 0) {
 
     $check_query = "SELECT * FROM levels WHERE name='$level_name' AND user_name='$username' LIMIT 1";
     $query_result = mysqli_query($db, $check_query);
-    if($query_result){
+    if($query_result->fetch_row()){
         array_push($result['error'], "User already has a level with this name.");
     }
 }

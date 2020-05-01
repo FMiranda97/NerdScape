@@ -102,21 +102,24 @@ class Component {
 
     updateDimensions(keysPressed) {
         let updated = false;
-        if (keysPressed["w"] || keysPressed["ArrowUp"]) {
-            this.height *= 10 / 9;
+        if (keysPressed["w"] || keysPressed["W"] || keysPressed["ArrowUp"]) {
+            this.height = Math.round(this.height * 10 / 9);
             updated = true;
         }
-        if (keysPressed["a"] || keysPressed["ArrowLeft"]) {
-            this.width *= 0.9;
+        if (keysPressed["a"] || keysPressed["A"] || keysPressed["ArrowLeft"]) {
+            this.width = Math.round(0.9* this.width);
             updated = true;
         }
-        if (keysPressed["s"] || keysPressed["ArrowDown"]) {
-            this.height *= 0.9;
+        if (keysPressed["s"] || keysPressed["S"] || keysPressed["ArrowDown"]) {
+            this.height = Math.round(this.height * 0.9);
             updated = true;
         }
-        if (keysPressed["d"] || keysPressed["ArrowRight"]) {
-            this.width *= 10 / 9;
+        if (keysPressed["d"] || keysPressed["D"] || keysPressed["ArrowRight"]) {
+            this.width = Math.round(this.width * 10 / 9);
             updated = true;
+        }
+        if(updated){
+            this.imageData = this.getPixelData();
         }
         return updated;
     }
@@ -156,6 +159,7 @@ class Component {
     }
 
     updatePosition(cw, ch, speedX, speedY) {
+
         //update xAxis
         const desired_coordinatex = this.x + speedX;
         const desired_coordinatey = this.y + speedY;

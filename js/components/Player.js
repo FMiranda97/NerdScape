@@ -56,7 +56,11 @@ class Player extends Component {
         }
     }
 
-    updatePosition(user, staticSprites, canvas) {
+    updatePosition(user, staticSprites, canvas, call_super) {
+        if(call_super){
+            super.updatePosition(user, staticSprites, canvas, call_super);
+            return;
+        }
         if(this.Sx < 0) this.movedBack = true;
         else if(this.Sx > 0) this.movedBack = false;
         let canL = true, canR = true, canD = true, canU = true;

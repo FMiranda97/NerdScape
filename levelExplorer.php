@@ -25,19 +25,24 @@ include('actions/do_logout.php')
     <br>
 
     <canvas id="canvas" width="800" height="450" style="display: block; margin: auto; background: #dddddd"></canvas>
-    <audio id = "music" autoplay loop>
+    <audio id="music" autoplay loop>
         <source src="resources/sounds/tricana.mp3">
     </audio>
     <br>
 
-<!--TODO get proper table CSS-->
-    <table style="width: 100%">
-        <tr>
-            <th>Level name</th>
-            <th>Creator</th>
-            <th>Upvotes</th>
-            <th>Downvotes</th>
-        </tr>
-    </table>
+    <form action="levelExplorer.php" method = "get">
+        <!--TODO get proper table CSS-->
+        <!--TODO assign action to button presses-->
+        <table style="width: 100%; text-align: center">
+            <tr>
+                <th>Level name</th>
+                <th>Creator</th>
+                <th>Upvotes</th>
+                <th>Downvotes</th>
+                <th>Actions</th>
+            </tr>
+            <?php include("page_complements/levels_table.php") ?>
+        </table>
+    </form>
 </body>
 </html>

@@ -123,7 +123,7 @@ class levelDesigner extends Engine {
             if (me.selectedSprite && (me.rightClicked === false || me.drag === true)) {
                 let speedX = ev.offsetX - me.selectedSprite.width / 2 - me.selectedSprite.x;
                 let speedY = ev.offsetY - me.selectedSprite.height / 2 - me.selectedSprite.y;
-                me.selectedSprite.updatePosition(me.ctx.canvas.width, me.ctx.canvas.height, speedX, speedY);
+                me.selectedSprite.updatePosition(me.ctx.canvas.width, me.ctx.canvas.height, speedX, speedY, true);
                 if (me.rightClicked === true && me.drag === true) {
                     me.editor.spawnEditor(me.selectedSprite, me.selectors);
                 }
