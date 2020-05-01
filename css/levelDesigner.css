@@ -1,0 +1,51 @@
+span{
+	padding: 25px;
+}
+
+label {
+	font-size: medium;
+}
+
+label.a {
+	word-spacing: 115px;
+}
+
+div {
+	font-size: x-large;
+	position: relative;
+	text-align: center;
+}
+
+#Editor{
+	display: none;
+}
+
+#enemyEditor{
+	display: none;
+}
+
+#flagEditor{
+	display: none;
+}
+
+#coinEditor{
+	display: none;
+}
+
+#portalEditor{
+	display: none;
+}
+
+#movements{
+	position: center;
+}
+
+#angle_container{
+	display:none;
+}
+
+textarea {
+	width: 40px;
+	height: 20px;
+	resize: none;
+}
