@@ -1,10 +1,17 @@
+<?php
+include('actions/check_login.php');
+include('actions/do_logout.php')
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
 	<title>NerdScape: Level Designer</title>
 
-	<meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <meta charset="utf-8">
 	<script type="text/javascript" src="js/engines/Engine.js" defer></script>
 	<script type="text/javascript" src="js/engines/levelDesigner.js" defer></script>
 	<script type="text/javascript" src="js/components/Component.js" defer></script>
@@ -32,9 +39,10 @@
 	<div class="topnav">
 		<a href="NerdScape.php">Main Game</a>
 		<a class="active" href="levelDesigner.php">Level Designer</a>
+        <a href="LevelExplorer.php">Level Explorer</a>
 		<a href="#scoreboard">Scoreboards</a>
 		<a href="#about">About</a>
-		<a class="logout" href="index.php?logout='1'">Log out</a>
+		<a class="logout" href="?logout='1'">Log out</a>
 	</div>
 	<br>
 
@@ -47,18 +55,14 @@
 		<div id="uniqueContainer"><p>Unique elements</p></div>
 
 		<div>
-			<form id="downloadbtn">
-				<label>File name:
-					<input type="text" name="name" value="levelX.lv">
-				</label>
-				<input type="submit" value="Download">
-			</form>
-			<form id="uploadbtn">
-				<label>Level input:
-					<textarea name="lvlinfo" rows="10" cols="30"></textarea>
+
+			<form id = "createLevelbtn" method="post">
+				<label>Level name:
+					<input type="text" name="name" value="my level">
 				</label>
 				<input type="submit" value="Upload">
 			</form>
+
 			Instructions <br>
 			<label>
 				1 - Select an element to pop on canvas. You may only select 1 player and 1 flag.<br>

@@ -1,0 +1,49 @@
+CREATE TABLE users (
+	username		 varchar(32),
+	email	 varchar(32),
+	confirmed	 boolean,
+	save_game	 text,
+	password_hash varchar(64),
+	PRIMARY KEY(username)
+);
+
+CREATE TABLE levels (
+	id	 int auto_increment,
+	level_info	 text NOT NULL,
+	upvotes	 int DEFAULT 0,
+	downvotes int DEFAULT 0,
+	name varchar(32) NOT NULL,
+	user_name varchar(32) NOT NULL,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE score (
+	completion_time int,
+	collected_coins int,
+	enemies_killed	 int,
+	level_id	 int,
+	user_name	 varchar(32),
+	PRIMARY KEY(level_id,user_name)
+);
+
+CREATE TABLE sprite (
+	type	 varchar(16),
+	id	 int auto_increment,
+	image	 longblob,
+	user_name varchar(32) NOT NULL,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE sprite_level (
+	sprite_id int,
+	level_id	 int,
+	PRIMARY KEY(sprite_id,level_id)
+);
+
+ALTER TABLE levels ADD CONSTRAINT level_fk1 FOREIGN KEY (user_name) REFERENCES users(username);
+ALTER TABLE score ADD CONSTRAINT score_fk1 FOREIGN KEY (level_id) REFERENCES levels(id);
+ALTER TABLE score ADD CONSTRAINT score_fk2 FOREIGN KEY (user_name) REFERENCES users(username);
+ALTER TABLE sprite ADD CONSTRAINT sprite_fk1 FOREIGN KEY (user_name) REFERENCES users(username);
+ALTER TABLE sprite_level ADD CONSTRAINT sprite_level_fk1 FOREIGN KEY (sprite_id) REFERENCES sprite(id);
+ALTER TABLE sprite_level ADD CONSTRAINT sprite_level_fk2 FOREIGN KEY (level_id) REFERENCES levels(id);
+ALTER TABLE levels ADD CONSTRAINT UNIQUE (user_name, name);

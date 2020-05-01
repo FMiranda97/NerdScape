@@ -1,7 +1,4 @@
 <?php
-
-//$_SESSION['username'] = "TEST USER"; //TODO remove this line
-
 include('actions/check_login.php');
 include('actions/do_logout.php')
 ?>
@@ -56,6 +53,7 @@ include('actions/do_logout.php')
 	<div class="topnav">
 		<a class="active">Main Game</a>
 		<a href="levelDesigner.php">Level Designer</a>
+        <a href="LevelExplorer.php">Level Explorer</a>
 		<a href="#scoreboard">Scoreboards</a>
 		<a href="#about">About</a>
 		<a class="logout" href="?logout='1'">Log out</a>

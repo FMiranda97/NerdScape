@@ -13,24 +13,22 @@ const NUM_ENEMIES = 3;
 function main() {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
-    const download = document.getElementById("downloadbtn");
-    const upload = document.getElementById("uploadbtn");
+    const upload = document.getElementById("createLevelbtn");
     const selectors = document.getElementById("selectors");
     const preview = document.getElementById("preview");
-    new levelDesigner(ctx, download, upload, selectors, preview);
+    new levelDesigner(ctx, upload, selectors, preview);
 }
 
 class levelDesigner extends Engine {
 
-    constructor(ctx, download, upload, selectors, preview) {
+    constructor(ctx, upload, selectors, preview) {
         super(ctx);
 
         //selection and placement
         this.rightClicked = false;
         this.drag = false;
-        this.download = download;
-        this.upload = upload;
         this.preview = preview;
+        this.upload = upload;
         //editor
         this.selectors = selectors;
         this.editor = new Editor(this);
@@ -46,7 +44,6 @@ class levelDesigner extends Engine {
     }
 
     init() {
-        //enable download/upload
         this.initButtons();
         // component selection loader
         this.initSelectors();
@@ -56,20 +53,29 @@ class levelDesigner extends Engine {
 
     initButtons() {
         const me = this;
-        this.download.onsubmit = function (ev) {
-            ev.preventDefault();
-            if (me.level.flagSprite && me.level.playerSprite) me.downloadLevel(ev.target['name'].value);
-            else alert("Player start point or level flag not set");
-        };
-        this.upload.onsubmit = function (ev) {
-            ev.preventDefault();
-            me.level.fromString(ev.target['lvlinfo'].value);
-        };
         this.preview.onclick = function () {
             for (let i = 0; i < me.level.enemySprites.length; i++) {
                 me.level.enemySprites[i].shouldMove = me.level.enemySprites[i].shouldMove === false;
                 me.level.enemySprites[i].reset();
             }
+        };
+        this.upload.onsubmit = function (ev) {
+            let level = me.level.toString();
+            $.ajax({
+                type: "POST",
+                url: 'actions/upload_level.php',
+                dataType: 'json',
+                data: {level_name: ev.target['name'].value, level_info: level},
+
+                success: function (response) {
+                    if(response.status !== "Failed"){
+                        alert(response.status);
+                    }else{
+                        for (let error of response.error)
+                        alert(error);
+                    }
+                }
+            });
         };
     }
 
@@ -260,19 +266,6 @@ class levelDesigner extends Engine {
     spawnSelector() {
         this.selectors.style.display = "block";
         this.editor.despawn();
-    }
-
-    downloadLevel(filename) {
-        //generate text here
-        const text = this.level.toString();
-        const element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-        element.setAttribute('download', filename);
-
-        element.style.display = 'none';
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
     }
 
     findSelectedSprite(ev) {

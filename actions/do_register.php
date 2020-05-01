@@ -33,7 +33,7 @@ if (isset($_POST['reg_user'])) {
 
     // check if user exists in database
     $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
-    $result = mysqli_query($db, $user_check_query);
+    mysqli_query($db, $user_check_query);
     $user = mysqli_fetch_assoc($result);
 
     if ($user) { // if user exists
@@ -54,6 +54,6 @@ if (isset($_POST['reg_user'])) {
         mysqli_query($db, $query);
         $_SESSION['username'] = $username;
         $_SESSION['success'] = "You are now logged in";
-        header('location: index.php');
+        header('location: NerdScape.php');
     }
 }
