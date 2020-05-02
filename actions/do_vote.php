@@ -15,12 +15,8 @@ if(isset($_GET['up']) || isset($_GET['down'])){
     $query = "SELECT * from votes where user_name = '$username' AND level_id = $level";
     $result = mysqli_query($db, $query);
     if($result->fetch_assoc()){
-        echo $username;
-        echo $level;
-        echo $vote;
         $query = "UPDATE votes SET vote = $vote WHERE user_name = '$username' AND level_id = $level";
     }else{
-
         $query = "INSERT INTO votes(user_name,level_id, vote) values('$username', $level, $vote)";
     }
     mysqli_query($db, $query);

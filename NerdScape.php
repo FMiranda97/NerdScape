@@ -11,7 +11,9 @@ include('actions/do_logout.php')
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/navbar.css">
 
-	<!--	components-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!--	components-->
 	<script type="text/javascript" src="js/components/Component.js" defer></script>
 	<script type="text/javascript" src="js/components/Flag.js" defer></script>
 	<script type="text/javascript" src="js/components/Portal.js" defer></script>

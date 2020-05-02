@@ -60,8 +60,9 @@ class Component {
             let Topo = Math.round(Math.max(limA[2], limB[2]));
             let Fundo = Math.round(Math.min(limA[3], limB[3]));
             //get pixels of intersection rectangle for each image
-            let thisPx = this.imageData;
-            let targetPx = target.imageData;
+            //TODO don't use method
+            let thisPx = this.getPixelData();
+            let targetPx = target.getPixelData();
             //check if pixel's alpha component is not null for 2 correspondent pixels
             for (let i = Esquerdo; i <= Direito; i++) {
                 for (let j = Topo; j <=  Fundo; j++) {

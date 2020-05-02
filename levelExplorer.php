@@ -80,6 +80,7 @@ if (isset($_GET['edit'])) {
         <input type="text" name="search">
         <input type="submit" value="search">
     </form>
+
     <form action="levelExplorer.php" method="get" id="level_selector" name="select">
         <table>
             <tr>

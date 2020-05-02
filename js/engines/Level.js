@@ -14,6 +14,10 @@ class Level {
             if (typeof lvl == "string") this.fromString(lvl);
             else this.generatePreset(lvl);
         }
+        this.timestamp = 0;
+        this.init_time = 0;
+        this.body_count = 0;
+        this.id = -1;
     }
 
     addBackgroundSprite(img) {
@@ -235,6 +239,7 @@ class Level {
     }
 
     start(total_time) {
+        if(this.init_time === 0) this.init_time = total_time;
         this.active = true;
         for (let i = 0; i < this.enemySprites.length; i++) {
             this.enemySprites[i].shouldMove = true;
@@ -258,7 +263,7 @@ class Level {
         this.updatePortals(keysPressed, user);
         this.updateChest(keysPressed, user);
         this.updateLife();
-        this.updateWin();
+        this.updateWin(total_time, user.difficulty);
         this.updateCoin();
     }
 
@@ -283,7 +288,8 @@ class Level {
 
         for(let shot of this.playerSprite.shots){
             for (let enemy of this.enemySprites)
-            if(shot.intersects(enemy)){
+            if(enemy.active && shot.intersects(enemy)){
+                this.body_count++;
                 enemy.active = false;
                 enemy.shots = [];
             }
@@ -334,6 +340,7 @@ class Level {
         this.alive = this.playerSprite.y < this.ctx.canvas.height;
         //check if touched enemy or a projectile
         for (let i = 0; i < this.enemySprites.length && this.alive; i++) {
+            if(!this.enemySprites[i].active) continue;
             this.alive = !this.enemySprites[i].intersects(this.playerSprite);
             if (this.enemySprites[i].shots !== undefined) {
                 for (let j = 0; j < this.enemySprites[i].shots.length && this.alive; j++) {
@@ -343,8 +350,20 @@ class Level {
         }
     }
 
-    updateWin() {
-        if (this.playerSprite.intersects(this.flagSprite)) this.won = true;
+    updateWin(total_time, difficulty) {
+        this.timestamp = total_time;
+        if (this.playerSprite.intersects(this.flagSprite) && this.won === false){
+            this.won = true;
+            let beat_time = this.timestamp - this.init_time;
+            $.ajax({
+                type: "post",
+                url: 'actions/upload_score.php',
+                dataType: 'json',
+                data:{beat_time: beat_time, body_count: this.body_count, money: (this.flagSprite.reward*difficulty), level_id: this.id},
+            });
+            this.init_time = 0;
+            this.body_count = 0;
+        }
     }
 
     getPortal(id) {
@@ -371,10 +390,22 @@ class Level {
     generatePreset(lvl) {
         this.clear();
         this.lvl = lvl;
-        let req = new XMLHttpRequest();
-        req.open("GET", "Levels/Level" + lvl + ".lvl", false);
-        req.send()
-        let response = req.responseText;
-        this.fromString(response);
+        let me = this;
+        jQuery.ajax({
+            type: "post",
+            url: 'actions/get_main_level.php',
+            dataType: 'json',
+            data:{level: lvl},
+            success: function (response) {
+                if(response.status === "success"){
+                    me.fromString(response.level_data);
+                    me.id = parseInt(response.id);
+                }else{
+                    alert("Error loading level");
+                }
+
+            }
+        });
+
     }
 }

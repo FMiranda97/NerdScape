@@ -20,8 +20,7 @@ CREATE TABLE score (
 	collected_coins int,
 	enemies_killed	 int,
 	level_id	 int,
-	user_name	 varchar(32),
-	PRIMARY KEY(level_id,user_name)
+	user_name	 varchar(32)
 );
 
 CREATE TABLE sprite (

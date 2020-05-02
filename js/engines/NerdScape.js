@@ -26,11 +26,11 @@ function main() {
             data:{play: vars['play'], edit: vars['edit']},
             success: function (response) {
                 if(response['op'] === 'play'){
-                    ns.exploreLevel(response['level_data'])
+                    ns.exploreLevel(response['level_data'], parseInt(vars['play']))
                 }else if(response['op'] === 'edit'){
                     alert('Wrong page')
                 }else{
-                    ns.exploreLevel("bkg:0\nstatic:0\nenemies:0\nportals:0\ncoins:0\nchests:0\nplayer:0\nflag:0\n");
+                    ns.exploreLevel("bkg:0\nstatic:0\nenemies:0\nportals:0\ncoins:0\nchests:0\nplayer:0\nflag:0\n", -1);
                 }
             }
         });
@@ -166,10 +166,11 @@ class NerdScape extends Engine {
         }
     }
 
-    exploreLevel(lvl){
+    exploreLevel(lvl, level_id){
         this.exploreMode = true;
         this.level.clear();
         this.level.fromString(lvl);
+        this.level.id = level_id;
         this.mainMenu.active = false;
         this.levelStartMenu.active = true;
     }
