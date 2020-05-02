@@ -7,7 +7,7 @@ include('actions/do_logout.php')
 
 <html lang="en">
 <head>
-	<title>NerdScape: Level Designer</title>
+	<title>NerdScape - Level Designer</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -39,8 +39,8 @@ include('actions/do_logout.php')
 	<div class="topnav">
 		<a href="NerdScape.php">Main Game</a>
 		<a class="active" href="levelDesigner.php">Level Designer</a>
-        <a href="LevelExplorer.php">Level Explorer</a>
-		<a href="#scoreboard">Scoreboards</a>
+        <a href="levelExplorer.php">Level Explorer</a>
+		<a href="scoreboards.php">Scoreboards</a>
 		<a href="#about">About</a>
 		<a class="logout" href="?logout='1'">Log out</a>
 	</div>

@@ -13,7 +13,7 @@ if (isset($_GET['edit'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>NerdScape</title>
+    <title>NerdScape - Level Explorer</title>
 
     <meta charset="utf-8">
 
@@ -63,7 +63,7 @@ if (isset($_GET['edit'])) {
         <a href="NerdScape.php">Main Game</a>
         <a href="levelDesigner.php">Level Designer</a>
         <a class="active">Level Explorer</a>
-        <a href="#scoreboard">Scoreboards</a>
+        <a href="scoreboards.php">Scoreboards</a>
         <a href="#about">About</a>
         <a class="logout" href="?logout='1'">Log out</a>
     </div>
