@@ -16,7 +16,25 @@ function main() {
     const upload = document.getElementById("createLevelbtn");
     const selectors = document.getElementById("selectors");
     const preview = document.getElementById("preview");
-    new levelDesigner(ctx, upload, selectors, preview);
+    const ld = new levelDesigner(ctx, upload, selectors, preview);
+    let vars = {};
+    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    $.ajax({
+        type: "post",
+        url: 'actions/get_level.php',
+        dataType: 'json',
+        data: {play: vars['play'], edit: vars['edit']},
+        success: function (response) {
+            if (response['op'] === 'edit') {
+                ld.level.clear();
+                ld.level.fromString(response['level_data'])
+            } else if (response['op'] === 'play') {
+                alert('Wrong page')
+            }
+        }
+    });
 }
 
 class levelDesigner extends Engine {
@@ -61,23 +79,43 @@ class levelDesigner extends Engine {
         };
         this.upload.onsubmit = function (ev) {
             ev.preventDefault();
-            if(!me.level.playerSprite || !me.level.flagSprite){
+            if (!me.level.playerSprite || !me.level.flagSprite) {
                 alert("Must have a player and a flag.");
                 return;
             }
             let level = me.level.toString();
+            let ow = 'unchecked';
             jQuery.ajax({
                 type: "POST",
                 url: 'actions/upload_level.php',
                 dataType: 'json',
-                data: {level_name: ev.target['name'].value, level_info: level},
+                data: {level_name: ev.target['name'].value, level_info: level, overwrite: ow},
 
                 success: function (response) {
-                    if(response.status !== "Failed"){
+                    if(response.status === "NeedConfirmation"){
+                        ow = confirm("Level with this name already exists. Overwrite?");
+                        if(ow === true){
+                            jQuery.ajax({
+                                type: "POST",
+                                url: 'actions/upload_level.php',
+                                dataType: 'json',
+                                data: {level_name: ev.target['name'].value, level_info: level, overwrite: "ok"},
+
+                                success: function (response) {
+                                    if (response.status !== "Failed") {
+                                        alert(response.status);
+                                    } else {
+                                        for (let error of response.error)
+                                            alert(error);
+                                    }
+                                }
+                            });
+                        }
+                    }else if (response.status !== "Failed") {
                         alert(response.status);
-                    }else{
+                    } else {
                         for (let error of response.error)
-                        alert(error);
+                            alert(error);
                     }
                 }
             });
@@ -90,10 +128,10 @@ class levelDesigner extends Engine {
             ev.preventDefault();
             if (me.selectedSprite && me.rightClicked === false) return;
             me.selectedSprite = me.findSelectedSprite(ev);
-            if(me.selectedSprite){
+            if (me.selectedSprite) {
                 me.rightClicked = true;
                 me.editor.spawnEditor(me.selectedSprite, me.selectors);
-            }else{
+            } else {
                 me.selectedSprite = null;
                 me.spawnSelector()
             }
@@ -211,9 +249,9 @@ class levelDesigner extends Engine {
             me.enemyImgs[i].onload = loadHandler;
             me.enemyImgs[i].onclick = function (ev) {
                 let type;
-                if(i === 0) type = "randomizer";
-                if(i === 1) type = "repeater";
-                if(i === 2) type = "sniper";
+                if (i === 0) type = "randomizer";
+                if (i === 1) type = "repeater";
+                if (i === 2) type = "sniper";
                 me.level.addEnemySprite(ev.target, type);
             }
         });

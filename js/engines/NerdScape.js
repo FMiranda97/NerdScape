@@ -15,9 +15,7 @@ function main() {
     const ns = new NerdScape(ctx, music);
     if(form){
         //ajax to get level
-        let level = null;
-        let me = this;
-        var vars = {};
+        let vars = {};
         window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
             vars[key] = value;
         });
@@ -27,13 +25,10 @@ function main() {
             dataType: 'json',
             data:{play: vars['play'], edit: vars['edit']},
             success: function (response) {
-                alert(response['op']);
-                alert(response['level']);
-                alert(response['level_data']);
                 if(response['op'] === 'play'){
                     ns.exploreLevel(response['level_data'])
                 }else if(response['op'] === 'edit'){
-                    //TODO
+                    alert('Wrong page')
                 }else{
                     ns.exploreLevel("bkg:0\nstatic:0\nenemies:0\nportals:0\ncoins:0\nchests:0\nplayer:0\nflag:0\n");
                 }

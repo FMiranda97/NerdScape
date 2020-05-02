@@ -1,7 +1,10 @@
 <?php
 include('actions/check_login.php');
-include('actions/do_logout.php')
+include('actions/do_logout.php');
+if(isset($_GET['edit'])){header('location: levelDesigner.php?edit=' . $_GET['edit']);}
 ?>
+
+<!--TODO define AJAX on error-->
 
 <!DOCTYPE html>
 <html lang="en">
