@@ -10,8 +10,6 @@ CREATE TABLE users (
 CREATE TABLE levels (
 	id	 int auto_increment,
 	level_info	 text NOT NULL,
-	upvotes	 int DEFAULT 0,
-	downvotes int DEFAULT 0,
 	name varchar(32) NOT NULL,
 	user_name varchar(32) NOT NULL,
 	PRIMARY KEY(id)

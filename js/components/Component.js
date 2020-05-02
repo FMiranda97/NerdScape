@@ -23,10 +23,17 @@ class Component {
         this.height = h;
         if (typeof img === "string") {
             let image = new Image();
+            let me = this;
+            let loadhandler = function(ev){
+                me.imageData = me.getPixelData();
+            }
+            image.addEventListener("load",loadhandler);
             image.src = img;
             this.image = image;
-        } else this.image = img;
-        this.imageData = this.getPixelData();
+        } else {
+            this.image = img;
+            this.imageData = this.getPixelData();
+        }
     }
 
     constructWithString(str) {
