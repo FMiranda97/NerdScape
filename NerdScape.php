@@ -28,7 +28,6 @@ include('actions/do_logout.php')
 
 	<!--	player-->
 	<script type="text/javascript" src="js/components/Player.js" defer></script>
-	<script type="text/javascript" src="js/components/Sword.js" defer></script>
 
 	<!--	menus-->
 	<script type="text/javascript" src="js/menus/MenuComponent.js" defer></script>

@@ -57,7 +57,7 @@ class Player extends Component {
     }
 
     updatePosition(user, staticSprites, canvas, call_super) {
-        if(call_super){
+        if(call_super !== undefined){
             super.updatePosition(user, staticSprites, canvas, call_super);
             return;
         }

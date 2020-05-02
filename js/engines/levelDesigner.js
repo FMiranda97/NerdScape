@@ -60,8 +60,12 @@ class levelDesigner extends Engine {
             }
         };
         this.upload.onsubmit = function (ev) {
+            if(!me.level.playerSprite || !me.level.flagSprite){
+                alert("Must have a player and a flag.");
+                return;
+            }
             let level = me.level.toString();
-            $.ajax({
+            jQuery.ajax({
                 type: "POST",
                 url: 'actions/upload_level.php',
                 dataType: 'json',

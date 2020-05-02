@@ -44,8 +44,9 @@ class LevelOverMenu {
 
     clickSprite(ev) {
         if (!this.active) return false;
-        this.clickBack(ev);
         this.clickRetry(ev);
+        if(this.engine.exploreMode) return;
+        this.clickBack(ev);
         this.clickNext(ev);
         return true;
     }

@@ -11,9 +11,9 @@ while($row = $result->fetch_assoc()){
     echo "<td>" . $row['user_name'] . "</td>";
     echo "<td>" . $row['upvotes'] . "</td>";
     echo "<td>" . $row['downvotes'] . "</td>";
-    echo "<td>" . "<input type='submit' name = 'play_" . $row['id'] . "' value = Play>";
+    echo "<td>" . "<button type='submit' name = 'play' value = '" . $row['id'] . "'>Play</button>";
     if(!strcmp($_SESSION['username'],$row['user_name']))
-        echo "<input type='submit' name = 'edit_" . $row['id'] . "' value = Edit>";
+        echo "<button type='submit' name = 'edit' value = '". $row['id'] ."'>Edit</button>";
     echo "<td>";
     echo "</tr>";
 }

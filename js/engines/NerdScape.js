@@ -11,13 +11,42 @@ function main() {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
     const music = document.getElementById("music");
-    new NerdScape(ctx, music);
+    const form = document.getElementById("level_selector");
+    const ns = new NerdScape(ctx, music);
+    if(form){
+        //ajax to get level
+        let level = null;
+        let me = this;
+        var vars = {};
+        window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+            vars[key] = value;
+        });
+        jQuery.ajax({
+            type: "post",
+            url: 'actions/get_level.php',
+            dataType: 'json',
+            data:{play: vars['play'], edit: vars['edit']},
+            success: function (response) {
+                alert(response['op']);
+                alert(response['level']);
+                alert(response['level_data']);
+                if(response['op'] === 'play'){
+                    ns.exploreLevel(response['level_data'])
+                }else if(response['op'] === 'edit'){
+                    //TODO
+                }else{
+                    ns.exploreLevel("bkg:0\nstatic:0\nenemies:0\nportals:0\ncoins:0\nchests:0\nplayer:0\nflag:0\n");
+                }
+            }
+        });
+    }
 }
 
 class NerdScape extends Engine {
 
     constructor(ctx, music) {
         super(ctx);
+        this.exploreMode = false;
         this.loadGame();
         this.music = music;
         this.mainMenu = new MainMenu(this);
@@ -115,6 +144,7 @@ class NerdScape extends Engine {
                 this.saveGame();
             } else this.levelOverMenu.won = false;
         }
+        this.activateExplorer();
         if (this.levelStartMenu) this.levelStartMenu.draw(this.ctx, total_time);
         if (this.levelOverMenu) this.levelOverMenu.draw(this.ctx, total_time);
         if (this.levelSelectionMenu) this.levelSelectionMenu.draw(this.ctx);
@@ -139,5 +169,22 @@ class NerdScape extends Engine {
         }else{
             this.user = new User();
         }
+    }
+
+    exploreLevel(lvl){
+        this.exploreMode = true;
+        this.level.clear();
+        this.level.fromString(lvl);
+        this.mainMenu.active = false;
+        this.levelStartMenu.active = true;
+    }
+
+    activateExplorer(){
+        if(!this.exploreMode) return;
+        if(this.levelStartMenu && (!this.level.active || this.level.isOver() !== NOT_OVER) && !this.levelOverMenu.active) this.levelStartMenu.active = true;
+        if (this.levelSelectionMenu) this.levelSelectionMenu.active = false;
+        if (this.mainMenu) this.mainMenu.active = false;
+        if (this.optionsMenu) this.optionsMenu.active = false;
+        if (this.shopMenu) this.shopMenu.active = false;
     }
 }
