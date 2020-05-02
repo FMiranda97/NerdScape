@@ -40,6 +40,13 @@ CREATE TABLE sprite_level (
 	PRIMARY KEY(sprite_id,level_id)
 );
 
+CREATE TABLE votes (
+    vote int,
+    user_name varchar(32),
+    level_id int
+    PRIMARY KEY(user_name, level_id)
+);
+
 ALTER TABLE levels ADD CONSTRAINT level_fk1 FOREIGN KEY (user_name) REFERENCES users(username);
 ALTER TABLE score ADD CONSTRAINT score_fk1 FOREIGN KEY (level_id) REFERENCES levels(id);
 ALTER TABLE score ADD CONSTRAINT score_fk2 FOREIGN KEY (user_name) REFERENCES users(username);
@@ -47,3 +54,6 @@ ALTER TABLE sprite ADD CONSTRAINT sprite_fk1 FOREIGN KEY (user_name) REFERENCES 
 ALTER TABLE sprite_level ADD CONSTRAINT sprite_level_fk1 FOREIGN KEY (sprite_id) REFERENCES sprite(id);
 ALTER TABLE sprite_level ADD CONSTRAINT sprite_level_fk2 FOREIGN KEY (level_id) REFERENCES levels(id);
 ALTER TABLE levels ADD CONSTRAINT UNIQUE (user_name, name);
+ALTER TABLE votes add constraint unique (user_name, level_id)
+ALTER TABLE votes ADD CONSTRAINT votes_fk1 FOREIGN KEY (level_id) REFERENCES levels(id);
+ALTER TABLE votes ADD CONSTRAINT votes_fk2 FOREIGN KEY (user_name) REFERENCES users(username);

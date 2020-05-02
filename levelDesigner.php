@@ -68,18 +68,8 @@ include('actions/do_logout.php')
 				1 - Select an element to pop on canvas. You may only select 1 player and 1 flag.<br>
 				2 - Drag elements to desired positions with left mouse.<br>
 				3 - While dragging used wasd or arrow keys to redimension your element.<br>
-				4 - Right click portals to select their destination. <br>
-				5 - Number on bottom left of portal is his ID. Number on bottom right of portal is his destination
-				ID.<br>
-				6 - Right click coins to edit their value. Value is shown in red below coin.<br>
-				7 - Right click flag to edit the level winning reward. Reward is shown in red below flag. <br>
-				8 - Portal ID's, coin values and level rewards will not be drawn on the actual game. <br>
-				9 - Right click enemies to edit their movement and actions.<br>
-				10 - Download your game to a text file with a name of your choosing.<br>
-				11 - Copy and paste the contents of that file and press upload to reload the previously downloaded
-				level.<br>
-				12 - When a level is ready go to method generatePreset from Level class, create a case and paste the
-				string there according to the default example.
+				4 - Right click elements to edit their properties<br>
+                5 - Name your level and upload it to make it available for everyone.
 			</label>
 		</div>
 	</div>

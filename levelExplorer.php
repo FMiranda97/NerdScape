@@ -1,10 +1,14 @@
 <?php
 include('actions/check_login.php');
 include('actions/do_logout.php');
-if(isset($_GET['edit'])){header('location: levelDesigner.php?edit=' . $_GET['edit']);}
+include('actions/do_vote.php');
+if (isset($_GET['edit'])) {
+    header('location: levelDesigner.php?edit=' . $_GET['edit']);
+}
 ?>
 
 <!--TODO define AJAX on error-->
+<!--TODO replace CSS-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +20,7 @@ if(isset($_GET['edit'])){header('location: levelDesigner.php?edit=' . $_GET['edi
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
     <!--	components-->
     <script type="text/javascript" src="js/components/Component.js" defer></script>
     <script type="text/javascript" src="js/components/Flag.js" defer></script>
@@ -70,15 +75,18 @@ if(isset($_GET['edit'])){header('location: levelDesigner.php?edit=' . $_GET['edi
     </audio>
     <br>
 
-    <form action="levelExplorer.php" method = "get" id = "level_selector" name = "select">
-        <!--TODO get proper table CSS-->
-        <!--TODO assign action to button presses-->
-        <table style="width: 100%; text-align: center">
+    <!--    level explorer filters-->
+    <form method="get">
+        <input type="text" name="search">
+        <input type="submit" value="search">
+    </form>
+    <form action="levelExplorer.php" method="get" id="level_selector" name="select">
+        <table>
             <tr>
-                <th>Level name</th>
-                <th>Creator</th>
-                <th>Upvotes</th>
-                <th>Downvotes</th>
+                <th><a href="?sort=name">Level name</a></th>
+                <th><a href="?sort=creator">Creator</a></th>
+                <th><a href="?sort=up">Upvotes</a></th>
+                <th><a href="?sort=down">Downvotes</a></th>
                 <th>Actions</th>
             </tr>
             <?php include("page_complements/levels_table.php") ?>
