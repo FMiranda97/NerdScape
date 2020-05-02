@@ -60,6 +60,7 @@ class levelDesigner extends Engine {
             }
         };
         this.upload.onsubmit = function (ev) {
+            ev.preventDefault();
             if(!me.level.playerSprite || !me.level.flagSprite){
                 alert("Must have a player and a flag.");
                 return;
