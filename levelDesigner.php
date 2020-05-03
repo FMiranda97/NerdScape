@@ -41,7 +41,7 @@ include('actions/do_logout.php')
 		<a class="active" href="levelDesigner.php">Level Designer</a>
         <a href="levelExplorer.php">Level Explorer</a>
 		<a href="scoreboards.php">Scoreboards</a>
-		<a href="#about">About</a>
+		<a href="about.php">About</a>
 		<a class="logout" href="?logout='1'">Log out</a>
 	</div>
 	<br>

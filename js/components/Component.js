@@ -24,7 +24,7 @@ class Component {
         if (typeof img === "string") {
             let image = new Image();
             let me = this;
-            let loadhandler = function(ev){
+            let loadhandler = function(){
                 me.imageData = me.getPixelData();
             }
             image.addEventListener("load",loadhandler);

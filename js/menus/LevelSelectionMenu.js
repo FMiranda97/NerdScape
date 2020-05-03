@@ -32,7 +32,7 @@ class LevelSelectionMenu {
         ctx.textAlign = "center";
         for (let i = 0; i < LEVELS_PER_LINE * N_LINES; i++) {
             this.levelBoxes[i].draw(ctx);
-            ctx.fillText(i + 1, this.levelBoxes[i].x + this.levelBoxes[i].width / 2, this.levelBoxes[i].y + this.levelBoxes[i].height / 2 + 8);
+            ctx.fillText(String(i + 1), this.levelBoxes[i].x + this.levelBoxes[i].width / 2, this.levelBoxes[i].y + this.levelBoxes[i].height / 2 + 8);
             if (i+1 > this.engine.user.maxLevel || i+1 > MAX_LEVEL) ctx.drawImage(this.cross, this.levelBoxes[i].x + this.levelBoxes[i].width/2 - 25, this.levelBoxes[i].y + this.levelBoxes[i].height/2 - 25, 50, 50);
         }
     }

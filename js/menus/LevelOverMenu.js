@@ -36,7 +36,7 @@ class LevelOverMenu {
             ctx.textAlign = "center";
             let level_reward = this.engine.level.flagSprite.basicReward * this.engine.user.difficulty;
             let coins = this.engine.level.flagSprite.reward * this.engine.user.difficulty - level_reward;
-            ctx.fillText(level_reward, this.engine.ctx.canvas.width / 2, this.engine.ctx.canvas.height / 2 + 10);
+            ctx.fillText(String(level_reward), this.engine.ctx.canvas.width / 2, this.engine.ctx.canvas.height / 2 + 10);
             ctx.fillText("+ " + coins, this.engine.ctx.canvas.width / 2, this.engine.ctx.canvas.height / 2 + 40);
             ctx.fillText("= " + this.engine.user.money, this.engine.ctx.canvas.width / 2, this.engine.ctx.canvas.height / 2 + 70);
         } else this.lose.draw(ctx);

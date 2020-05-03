@@ -23,7 +23,7 @@ include('actions/do_logout.php');
         <a href="levelDesigner.php">Level Designer</a>
         <a href="levelExplorer.php">Level Explorer</a>
         <a class="active">Scoreboards</a>
-        <a href="#about">About</a>
+        <a href="about.php">About</a>
         <a class="logout" href="?logout='1'">Log out</a>
     </div>
     <br>
@@ -45,7 +45,7 @@ include('actions/do_logout.php');
             <input type="radio" name = "param" value="Player">
             Player
         </label>
-        <input type="submit" value="Search">
+        <input type="submit" value="Go">
     </form>
 
     <form action="scoreboards.php" method="get" id="level_selector" name="select">

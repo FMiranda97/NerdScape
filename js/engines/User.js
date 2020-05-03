@@ -13,7 +13,6 @@ class User {
             this.canDouble = false;
             this.canPort = false;
             this.canLockpick = false;
-            this.canMelee = false;
             this.canRange = false;
         }
     }

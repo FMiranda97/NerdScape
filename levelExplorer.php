@@ -64,7 +64,7 @@ if (isset($_GET['edit'])) {
         <a href="levelDesigner.php">Level Designer</a>
         <a class="active">Level Explorer</a>
         <a href="scoreboards.php">Scoreboards</a>
-        <a href="#about">About</a>
+        <a href="about.php">About</a>
         <a class="logout" href="?logout='1'">Log out</a>
     </div>
     <br>
@@ -77,8 +77,18 @@ if (isset($_GET['edit'])) {
 
     <!--    level explorer filters-->
     <form method="get">
-        <input type="text" name="search">
-        <input type="submit" value="search">
+        <label>Search:
+            <input type="text" name="search">
+        </label>
+        <label>
+            <input type="radio" name = "param" value="Name" checked>
+            Name
+        </label>
+        <label>
+            <input type="radio" name = "param" value="Creator">
+            Creator
+        </label>
+        <input type="submit" value="Go">
     </form>
 
     <form action="levelExplorer.php" method="get" id="level_selector" name="select">
