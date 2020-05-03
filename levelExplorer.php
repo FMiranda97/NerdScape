@@ -105,6 +105,7 @@ if (isset($_GET['edit'])) {
         <input type="submit" name = "page" value="First">
         <input type="submit" name = "page" value="Previous">
         <input type="submit" name = "page" value="Next">
+        <input type="submit" name = "page" value="Last">
     </form>
 </body>
 </html>

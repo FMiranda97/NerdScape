@@ -79,6 +79,15 @@ if (isset($_GET['page'])) {
         $page = max($_SESSION['level_page'] - 1, 0);
     }elseif($_GET['page'] == "First"){
         $page = 0;
+    }elseif($_GET['page'] == "Last"){
+        $count_query = "SELECT COUNT(*) as cnt from ($query) as aux";
+        $result = mysqli_query($db, $count_query);
+        if($result){
+            $row = $result->fetch_assoc();
+            $page = floor(intval($row['cnt'])/10);
+        }else{
+            $page = 0;
+        }
     }
     $_SESSION['level_page'] = $page;
 } elseif (isset($_SESSION['level_page'])) {
