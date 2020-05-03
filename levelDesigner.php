@@ -47,6 +47,43 @@ include('actions/do_logout.php')
 	<br>
 
 	<canvas id="canvas" width="800" height="450" style="display: block; margin: auto; background: #dddddd"></canvas>
+    <form action="levelDesigner.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <label>
+            <input type="radio" name = "sprite_type" value="Background" checked>
+            Background
+        </label>
+        <label>
+            <input type="radio" name = "sprite_type" value="Static">
+            Static
+        </label>
+        <label>
+            <input type="radio" name = "sprite_type" value="Enemies">
+            Enemies
+        </label>
+        <label>
+            <input type="radio" name = "sprite_type" value="Player">
+            Player
+        </label>
+        <label>
+            <input type="radio" name = "sprite_type" value="Flag">
+            Flag
+        </label>
+        <label>
+            <input type="radio" name = "sprite_type" value="Portal">
+            Portal
+        </label>
+        <label>
+            <input type="radio" name = "sprite_type" value="Coin">
+            Coin
+        </label>
+        <label>
+            <input type="radio" name = "sprite_type" value="Chest">
+            Chest
+        </label>
+        <button type="submit" value="Upload Sprite" name="upload">Upload</button>
+    </form>
+    <?php include("actions/upload_sprite.php")?>
 	<div id="selectors">
 		<button id="preview">Preview Movement</button>
 		<div id="backgroundContainer"><p>Backgrounds</p></div>
