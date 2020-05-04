@@ -49,7 +49,7 @@ if (isset($_GET['param'])) {
     $_SESSION['last_level_param'] = $param;
 }
 
-$query = $query . " WHERE LOWER($param) like '%" . strtolower($search) . "%' AND levels.id = votes.level_id GROUP BY name, levels.user_name";
+$query = $query . " WHERE LOWER($param) like '%" . strtolower($search) . "%' GROUP BY name, levels.user_name";
 
 
 if (isset($_GET['sort'])) {

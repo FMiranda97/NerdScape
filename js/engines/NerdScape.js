@@ -134,7 +134,9 @@ class NerdScape extends Engine {
             this.levelOverMenu.active = true;
             if (status === WON) {
                 this.levelOverMenu.won = true;
-                this.user.money += this.level.flagSprite.reward * this.user.difficulty;
+                if(!this.exploreMode){
+                    this.user.money += this.level.flagSprite.reward * this.user.difficulty;
+                }
                 if (this.user.maxLevel === this.level.lvl) this.user.maxLevel++;
                 this.saveGame();
             } else this.levelOverMenu.won = false;

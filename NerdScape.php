@@ -3,6 +3,8 @@ include('actions/check_login.php');
 include('actions/do_logout.php')
 ?>
 
+<!--TODO load and save games from database-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

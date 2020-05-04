@@ -18,7 +18,7 @@ function main() {
     const preview = document.getElementById("preview");
     const ld = new levelDesigner(ctx, upload, selectors, preview);
     let vars = {};
-    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
         vars[key] = value;
     });
     $.ajax({
@@ -92,9 +92,9 @@ class levelDesigner extends Engine {
                 data: {level_name: ev.target['name'].value, level_info: level, overwrite: ow},
 
                 success: function (response) {
-                    if(response.status === "NeedConfirmation"){
+                    if (response.status === "NeedConfirmation") {
                         ow = confirm("Level with this name already exists. Overwrite?");
-                        if(ow === true){
+                        if (ow === true) {
                             jQuery.ajax({
                                 type: "POST",
                                 url: 'actions/upload_level.php',
@@ -111,7 +111,7 @@ class levelDesigner extends Engine {
                                 }
                             });
                         }
-                    }else if (response.status !== "Failed") {
+                    } else if (response.status !== "Failed") {
                         alert(response.status);
                     } else {
                         for (let error of response.error)
@@ -208,7 +208,7 @@ class levelDesigner extends Engine {
         //backgrounds
         let imgsrc = [];
         for (let i = 0; i < NUM_BACKGROUNDS; i++) imgsrc[i] = resdir + "bkg" + i + ext;
-        let container = document.getElementById('backgroundContainer');
+        let bkg_container = document.getElementById('backgroundContainer');
         let docFrag = document.createDocumentFragment();
         imgsrc.forEach(function (name, i) {
             me.backgroundImgs[i] = document.createElement('img');
@@ -219,12 +219,14 @@ class levelDesigner extends Engine {
                 me.level.addBackgroundSprite(ev.target);
             }
         });
-        container.appendChild(docFrag);
+        bkg_container.appendChild(docFrag);
+        this.ajaxContainer("Background", bkg_container, this.backgroundImgs);
+
 
         //static components
         imgsrc = [];
         for (let i = 0; i < NUM_STATIC_ELEMENTS; i++) imgsrc[i] = resdir + "img" + i + ext;
-        container = document.getElementById('staticContainer');
+        let static_container = document.getElementById('staticContainer');
         docFrag = document.createDocumentFragment();
         imgsrc.forEach(function (name, i) {
             me.staticImgs[i] = document.createElement('img');
@@ -235,12 +237,15 @@ class levelDesigner extends Engine {
                 me.level.addStaticSprite(ev.target);
             }
         });
-        container.appendChild(docFrag);
+        static_container.appendChild(docFrag);
+        this.ajaxContainer("Static", static_container, this.staticImgs);
+
+
         resdir = "resources/enemies/";
         //enemies
         imgsrc = [];
         for (let i = 0; i < NUM_ENEMIES; i++) imgsrc[i] = resdir + "enm" + i + ext;
-        container = document.getElementById('enemyContainer');
+        let enemy_container = document.getElementById('enemyContainer');
         docFrag = document.createDocumentFragment();
         imgsrc.forEach(function (name, i) {
             me.enemyImgs[i] = document.createElement('img');
@@ -255,55 +260,44 @@ class levelDesigner extends Engine {
                 me.level.addEnemySprite(ev.target, type);
             }
         });
-        container.appendChild(docFrag);
+        enemy_container.appendChild(docFrag);
+        this.ajaxContainer("Sniper", enemy_container, this.enemyImgs);
+        this.ajaxContainer("Repeater", enemy_container, this.enemyImgs);
+        this.ajaxContainer("Randomizer", enemy_container, this.enemyImgs);
 
         resdir = "resources/components/";
         //unique elements
-        container = document.getElementById('uniqueContainer');
+        let unique_container = document.getElementById('uniqueContainer');
         docFrag = document.createDocumentFragment();
+
         //player
         this.playerImg = document.createElement('img');
         docFrag.append(this.playerImg);
-        this.playerImg.src = resdir + "player" + ext;
-        this.playerImg.onload = loadHandler;
-        this.playerImg.onclick = function (ev) {
-            me.level.addPlayerSprite(ev.target);
-        };
+        this.ajaxUnique(this.playerImg, "Player", resdir, ext);
+
+
         //flag
         this.flagImg = document.createElement('img');
         docFrag.append(this.flagImg);
-        this.flagImg.src = resdir + "flag" + ext;
-        this.flagImg.onload = loadHandler;
-        this.flagImg.onclick = function (ev) {
-            me.level.addFlagSprite(ev.target);
-        };
+        this.ajaxUnique(this.flagImg, "Flag", resdir, ext);
+
         //portal
         this.portalImg = document.createElement('img');
         docFrag.append(this.portalImg);
-        this.portalImg.src = resdir + "portal" + ext;
-        this.portalImg.onload = loadHandler;
-        this.portalImg.onclick = function (ev) {
-            me.level.addPortalSprite(ev.target);
-        };
+        this.ajaxUnique(this.portalImg, "Portal", resdir, ext);
+
         //coin
         this.coinImg = document.createElement('img');
         docFrag.append(this.coinImg);
-        this.coinImg.src = resdir + "coin" + ext;
-        this.coinImg.onload = loadHandler;
-        this.coinImg.onclick = function (ev) {
-            me.level.addCoinSprite(ev.target);
-        };
+        this.ajaxUnique(this.coinImg, "Coin", resdir, ext);
+
         //chest
         this.chestImg = document.createElement('img');
         docFrag.append(this.chestImg);
-        this.chestImg.src = CLOSED_CHEST_IMG;
-        this.chestImg.onload = loadHandler;
-        this.chestImg.onclick = function (ev) {
-            me.level.addChestSprite(ev.target);
-        };
+        this.ajaxUnique(this.chestImg, "Chest", resdir, ext);
 
         //append to document
-        container.appendChild(docFrag);
+        unique_container.appendChild(docFrag);
     }
 
     spawnSelector() {
@@ -389,6 +383,97 @@ class levelDesigner extends Engine {
         this.ctx.textAlign = "right";
         if (this.level.flagSprite)
             this.ctx.fillText(this.level.flagSprite.basicReward, this.level.flagSprite.x + this.level.flagSprite.width / 2, this.level.flagSprite.y + this.level.flagSprite.height);
+
+    }
+
+    ajaxContainer(type, container, array) {
+        let me = this;
+        $.ajax({
+            type: "POST",
+            url: 'actions/get_sprite.php',
+            dataType: 'json',
+            data: {type: type},
+
+            success: function (response) {
+                if (response.status !== "Failed") {
+                    let loadHandler = function (ev) { //set apropriate dimensions for display
+                        let ratio = 100 / ev.target.naturalHeight;
+                        ev.target.height = ev.target.naturalHeight * ratio;
+                        ratio = 100 / ev.target.naturalWidth;
+                        ev.target.width = ev.target.naturalWidth * ratio;
+                    };
+                    let docFrag = document.createDocumentFragment();
+                    for (let sprite of response.sprites) {
+                        let element = document.createElement('img');
+                        array.push(element);
+                        docFrag.appendChild(element);
+                        element.src = sprite;
+                        element.onload = loadHandler;
+                        if (type === "Background") {
+                            element.onclick = function (ev) {
+                                me.level.addBackgroundSprite(ev.target);
+                            }
+                        } else if (type === "Static") {
+                            element.onclick = function (ev) {
+                                me.level.addStaticSprite(ev.target);
+                            }
+                        } else {
+                            element.onclick = function (ev) {
+                                me.level.addEnemySprite(ev.target, type.toLowerCase());
+                            }
+                        }
+                    }
+                    container.appendChild(docFrag);
+                }
+            }
+        });
+    }
+
+    ajaxUnique(img, type, resdir, ext) {
+        let me = this;
+        let loadHandler = function (ev) { //set apropriate dimensions for display
+            let ratio = 100 / ev.target.naturalHeight;
+            ev.target.height = ev.target.naturalHeight * ratio;
+            ratio = 100 / ev.target.naturalWidth;
+            ev.target.width = ev.target.naturalWidth * ratio;
+        };
+        $.ajax({
+            type: "POST",
+            url: 'actions/get_sprite.php',
+            dataType: 'json',
+            data: {type: type},
+            success: function (response) {
+                img.onload = loadHandler;
+                if (response.status !== "Failed" && response.sprites.length > 0) {
+                    img.src = response.sprites[0];
+                } else {
+                    if (type === "Chest"){
+                        img.src = CLOSED_CHEST_IMG;
+                    }else img.src = resdir + type + ext;
+                }
+                if (type === "Player") {
+                    img.onclick = function (ev) {
+                        me.level.addPlayerSprite(ev.target);
+                    };
+                } else if (type === "Flag") {
+                    img.onclick = function (ev) {
+                        me.level.addFlagSprite(ev.target);
+                    };
+                } else if (type === "Portal") {
+                    img.onclick = function (ev) {
+                        me.level.addPortalSprite(ev.target);
+                    };
+                } else if (type === "Coin") {
+                    img.onclick = function (ev) {
+                        me.level.addCoinSprite(ev.target);
+                    };
+                } else if (type === "Chest") {
+                    img.onclick = function (ev) {
+                        me.level.addChestSprite(ev.target);
+                    };
+                }
+            }
+        });
 
     }
 }

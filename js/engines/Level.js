@@ -31,7 +31,7 @@ class Level {
 
     addEnemySprite(img, type) {
         let newEnemy;
-        if (type === "shooter") {
+        if (type === "sniper") {
             newEnemy = new Sniper(0, 0, img.width, img.height, img);
         } else if (type === "repeater") {
             newEnemy = new Repeater(0, 0, img.width, img.height, img, 0);

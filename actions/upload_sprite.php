@@ -16,7 +16,7 @@ if (isset($_POST["upload"])) {
         $uploadOk = 0;
     }
     if (file_exists($target_file)) {
-        array_push($errors, "You have a file with this name. Choose a different filename.");
+        array_push($errors, "You have a sprite with this name. Choose a different filename.");
         $uploadOk = 0;
     }
     if ($_FILES["file"]["size"] > 500000) {
@@ -33,9 +33,17 @@ if (isset($_POST["upload"])) {
         $sprite_type = mysqli_real_escape_string($db, $_POST['sprite_type']);
         $username = mysqli_real_escape_string($db, $_SESSION['username']);
         $image_name = mysqli_real_escape_string($db, $target_file);
-        $query = "INSERT INTO sprite(type, user_name, image_name) values('$sprite_type', '$username', '$image_name')";
-        $result = mysqli_query($db, $query);
-        if ($result && move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+        if($sprite_type != "Static" && $sprite_type != "Background"){
+            $to_delete_query = "SELECT image_name FROM sprite WHERE sprite.type = '$sprite_type' AND sprite.user_name = '$username'";
+            $to_delete = mysqli_query($db, $to_delete_query);
+            $delete_query = "DELETE FROM sprite WHERE sprite.type = '$sprite_type' AND sprite.user_name = '$username'";
+        }
+        $insert_query = "INSERT INTO sprite(type, user_name, image_name) values('$sprite_type', '$username', '$image_name')";
+        if ((isset($delete_query) && mysqli_query($db, $delete_query) || !isset($delete_query)) && mysqli_query($db, $insert_query) && move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+            if(isset($to_delete) && $to_delete && $name = $to_delete->fetch_assoc()){
+                echo $name['image_name'] . '<br>';
+                unlink($name['image_name']);
+            }
             $db->commit();
         }else{
             $db->rollback();

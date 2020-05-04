@@ -47,6 +47,7 @@ include('actions/do_logout.php')
 	<br>
 
 	<canvas id="canvas" width="800" height="450" style="display: block; margin: auto; background: #dddddd"></canvas>
+    <br>
     <form action="levelDesigner.php" method="post" enctype="multipart/form-data">
         <input type="file" name="file" id="file">
         <label>
@@ -58,8 +59,16 @@ include('actions/do_logout.php')
             Static
         </label>
         <label>
-            <input type="radio" name = "sprite_type" value="Enemies">
-            Enemies
+            <input type="radio" name = "sprite_type" value="Sniper">
+            Sniper
+        </label>
+        <label>
+            <input type="radio" name = "sprite_type" value="Repeater">
+            Repeater
+        </label>
+        <label>
+            <input type="radio" name = "sprite_type" value="Randomizer">
+            Randomizer
         </label>
         <label>
             <input type="radio" name = "sprite_type" value="Player">
@@ -77,10 +86,6 @@ include('actions/do_logout.php')
             <input type="radio" name = "sprite_type" value="Coin">
             Coin
         </label>
-        <label>
-            <input type="radio" name = "sprite_type" value="Chest">
-            Chest
-        </label>
         <button type="submit" value="Upload Sprite" name="upload">Upload</button>
     </form>
     <?php include("actions/upload_sprite.php")?>
@@ -92,7 +97,6 @@ include('actions/do_logout.php')
 		<div id="uniqueContainer"><p>Unique elements</p></div>
 
 		<div>
-
 			<form id = "createLevelbtn" method="post">
 				<label>Level name:
 					<input type="text" name="name" value="my level">

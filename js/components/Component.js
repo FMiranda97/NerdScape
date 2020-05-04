@@ -11,7 +11,6 @@ class Component {
             return;
         if (y === undefined) {
             this.constructWithString(x);
-            this.imageData = this.getPixelData();
             return;
         }
 
@@ -47,6 +46,11 @@ class Component {
         this.height = parseInt(str[index++].split(":")[1]);
         this.image = new Image();
         this.image.src = str[index++].split(":")[1];
+        let me = this;
+        this.image.onload = function (ev) {
+            me.imageData = me.getPixelData();
+            ev.target.removeEventListener("load", this.onload);
+        }
         return index;
     }
 
@@ -202,7 +206,11 @@ class Component {
         str += "w:" + this.width + "|";
         str += "h:" + this.height + "|";
         let src = this.image.src.split("/");
-        src = src[src.length - 3] + "/" + src[src.length - 2] + "/" + src[src.length - 1];
+        if(src[src.length - 2] === "uploads"){
+            src = src[src.length - 2] + "/" + src[src.length - 1];
+        }else{
+            src = src[src.length - 3] + "/" + src[src.length - 2] + "/" + src[src.length - 1];
+        }
         str += "src:" + src;
         return str;
     }
