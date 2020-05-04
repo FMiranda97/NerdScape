@@ -16,12 +16,11 @@
 
 <form method="post" action="login.php">
     <?php include('page_complements/errors.php') ?>
-    <!--TODO remove default values-->
     <label for="username">Username or e-mail:</label><br>
-    <input type="text" id="username" name="username" value="John"><br>
+    <input type="text" id="username" name="username" value=""><br>
 
     <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" value="Doe"><br><br>
+    <input type="password" id="password" name="password" value=""><br><br>
 
     <input type="submit" name="login_user" value="Login">
 </form>

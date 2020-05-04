@@ -173,25 +173,12 @@ class NerdScape extends Engine {
             dataType: "json",
             data: {},
             success: function (response) {
-                if(response.status !== "Failure"){
+                if(response.status !== "Failure" && response.save){
                     me.user = JSON.parse(response.save);
                     me.optionsMenu = new OptionsMenu(me);
-                }else{
-                    me.user = new User();
                 }
             }
         });
-        /*let save = localStorage.getItem(SAVE_GAME);
-        if (save) {
-            try {
-                this.user = JSON.parse(save);
-            } catch (e) {
-                localStorage.removeItem(SAVE_GAME);
-                this.user = new User();
-            }
-        } else {
-            this.user = new User();
-        }*/
     }
 
     exploreLevel(lvl, level_id) {
