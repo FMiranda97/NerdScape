@@ -1,4 +1,5 @@
 <?php
+//TODO use sha2 with salt
 session_start();
 // initializing variables
 $username = "";

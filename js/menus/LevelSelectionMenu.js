@@ -39,7 +39,6 @@ class LevelSelectionMenu {
 
     clickSprite(ev) {
         if (!this.active) return false;
-        //TODO
         this.clickBack(ev);
         this.clickLevel(ev);
         return true;

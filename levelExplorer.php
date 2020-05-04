@@ -9,6 +9,8 @@ if (isset($_GET['edit'])) {
 
 <!--TODO define AJAX on error-->
 <!--TODO replace CSS-->
+<!--TODO protect against SQL injection-->
+<!--TODO change all database connections to under privileged user with a password-->
 
 <!DOCTYPE html>
 <html lang="en">

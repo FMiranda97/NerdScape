@@ -13,23 +13,23 @@ function main() {
     const music = document.getElementById("music");
     const form = document.getElementById("level_selector");
     const ns = new NerdScape(ctx, music);
-    if(form){
+    if (form) {
         //ajax to get level
         let vars = {};
-        window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
             vars[key] = value;
         });
         jQuery.ajax({
             type: "post",
             url: 'actions/get_level.php',
             dataType: 'json',
-            data:{play: vars['play'], edit: vars['edit']},
+            data: {play: vars['play'], edit: vars['edit']},
             success: function (response) {
-                if(response['op'] === 'play'){
+                if (response['op'] === 'play') {
                     ns.exploreLevel(response['level_data'], parseInt(vars['play']))
-                }else if(response['op'] === 'edit'){
+                } else if (response['op'] === 'edit') {
                     alert('Wrong page')
-                }else{
+                } else {
                     ns.exploreLevel("bkg:0\nstatic:0\nenemies:0\nportals:0\ncoins:0\nchests:0\nplayer:0\nflag:0\n", -1);
                 }
             }
@@ -67,12 +67,15 @@ class NerdScape extends Engine {
         };
         let mouseClick = function (ev) {
             me.clickSprite(ev);
-            if(me.level.active && me.user.canRange){
+            if (me.level.active && me.user.canRange) {
                 me.level.playerSprite.shoot(ev, me.user);
             }
         };
         let keyDown = function (ev) {
-            if(ev.key === "Escape"){me.pressEscape(); return;}
+            if (ev.key === "Escape") {
+                me.pressEscape();
+                return;
+            }
             if (!me.level.active) return;
             me.keysPressed[ev.key] = true;
             me.level.playerSprite.updateSpeed(me.keysPressed, me.user);
@@ -89,20 +92,20 @@ class NerdScape extends Engine {
         document.addEventListener("keyup", keyUp);
     }
 
-    pressEscape(){
-        if(this.level.active){
+    pressEscape() {
+        if (this.level.active) {
             this.levelStartMenu.active = true;
             this.level.pause();
-        }else if(this.levelStartMenu.active === true){
+        } else if (this.levelStartMenu.active === true) {
             this.levelStartMenu.active = false;
             this.level.start();
-        }else if(this.optionsMenu.active === true){
+        } else if (this.optionsMenu.active === true) {
             this.optionsMenu.active = false;
             this.optionsMenu.easy.clickable = false;
             this.optionsMenu.medium.clickable = false;
             this.optionsMenu.hard.clickable = false;
             this.optionsMenu.callerMenu.active = true;
-        }else if(this.levelSelectionMenu.active === true){
+        } else if (this.levelSelectionMenu.active === true) {
             this.levelSelectionMenu.active = false;
             this.mainMenu.active = true;
         }
@@ -121,7 +124,7 @@ class NerdScape extends Engine {
         //update engine time
         this.total_time = total_time;
         //move sprites
-        if(this.user)
+        if (this.user)
             this.level.update(total_time, this.keysPressed, this.user);
         //check if player still alive
         //draw necessary sprites
@@ -134,7 +137,7 @@ class NerdScape extends Engine {
             this.levelOverMenu.active = true;
             if (status === WON) {
                 this.levelOverMenu.won = true;
-                if(!this.exploreMode){
+                if (!this.exploreMode) {
                     this.user.money += this.level.flagSprite.reward * this.user.difficulty;
                 }
                 if (this.user.maxLevel === this.level.lvl) this.user.maxLevel++;
@@ -150,25 +153,48 @@ class NerdScape extends Engine {
         if (this.shopMenu) this.shopMenu.draw(this.ctx);
     }
 
-    saveGame(){
-        localStorage.setItem(SAVE_GAME, JSON.stringify(this.user));
+    saveGame() {
+        //localStorage.setItem(SAVE_GAME, JSON.stringify(this.user));
+        let save = JSON.stringify(this.user);
+        $.ajax({
+            type: "post",
+            url: "actions/do_save.php",
+            dataType: "json",
+            data: {save: save},
+        });
     }
 
-    loadGame(){
-        let save = localStorage.getItem(SAVE_GAME);
-        if(save){
-            try{
+    loadGame() {
+        let me = this;
+        this.user = new User();
+        $.ajax({
+            type: "post",
+            url: "actions/do_load.php",
+            dataType: "json",
+            data: {},
+            success: function (response) {
+                if(response.status !== "Failure"){
+                    me.user = JSON.parse(response.save);
+                    me.optionsMenu = new OptionsMenu(me);
+                }else{
+                    me.user = new User();
+                }
+            }
+        });
+        /*let save = localStorage.getItem(SAVE_GAME);
+        if (save) {
+            try {
                 this.user = JSON.parse(save);
-            }catch (e) {
+            } catch (e) {
                 localStorage.removeItem(SAVE_GAME);
                 this.user = new User();
             }
-        }else{
+        } else {
             this.user = new User();
-        }
+        }*/
     }
 
-    exploreLevel(lvl, level_id){
+    exploreLevel(lvl, level_id) {
         this.exploreMode = true;
         this.level.clear();
         this.level.fromString(lvl);
@@ -177,9 +203,9 @@ class NerdScape extends Engine {
         this.levelStartMenu.active = true;
     }
 
-    activateExplorer(){
-        if(!this.exploreMode) return;
-        if(this.levelStartMenu && (!this.level.active || this.level.isOver() !== NOT_OVER) && !this.levelOverMenu.active) this.levelStartMenu.active = true;
+    activateExplorer() {
+        if (!this.exploreMode) return;
+        if (this.levelStartMenu && (!this.level.active || this.level.isOver() !== NOT_OVER) && !this.levelOverMenu.active) this.levelStartMenu.active = true;
         if (this.levelSelectionMenu) this.levelSelectionMenu.active = false;
         if (this.mainMenu) this.mainMenu.active = false;
         if (this.optionsMenu) this.optionsMenu.active = false;
