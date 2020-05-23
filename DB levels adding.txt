@@ -1,4 +1,4 @@
-insert into users(username, email, password_hash) values("Admin", "email@example.com", "pass123")
+insert into users(username, email, password_hash) values("Admin", "email@example.com", "pass123");
 insert into levels(level_info, name, user_name) values ("bkg:1
                                                          x:0|y:0|w:800|h:450|src:resources/components/bkg0.png
                                                          static:4
@@ -45,7 +45,7 @@ insert into levels(level_info, name, user_name) values ("bkg:1
                                                          player:1
                                                          x:44.09342276925098|y:253|w:63|h:39|src:resources/components/player.png
                                                          flag:1
-                                                         x:719|y:227|w:57|h:67|src:resources/components/flag.png|reward:100", Main Game Level 1, "Admin");
+                                                         x:719|y:227|w:57|h:67|src:resources/components/flag.png|reward:100", "Main Game Level 2", "Admin");
 insert into levels(level_info, name, user_name) values ("bkg:1
                                                          x:0|y:0|w:800|h:450|src:resources/components/bkg0.png
                                                          static:1
@@ -73,6 +73,31 @@ insert into levels(level_info, name, user_name) values ("bkg:1
 ", "Main Game Level 1", "Admin");
 insert into levels(level_info, name, user_name) values ("bkg:1
                                                          x:0|y:0|w:800|h:450|src:resources/components/bkg0.png
+                                                         static:1
+                                                         x:2|y:121|w:822|h:31|src:resources/components/img0.png
+                                                         enemies:0
+                                                         portals:12
+                                                         x:467.55|y:26|w:72|h:72|src:resources/components/portal.png|id:0|destination_id:10
+                                                         x:389.55|y:28|w:72|h:72|src:resources/components/portal.png|id:1|destination_id:10
+                                                         x:315.55|y:30|w:72|h:72|src:resources/components/portal.png|id:2|destination_id:10
+                                                         x:242.55|y:26|w:72.9|h:81|src:resources/components/portal.png|id:3|destination_id:10
+                                                         x:168|y:26|w:72|h:81|src:resources/components/portal.png|id:4|destination_id:10
+                                                         x:100|y:25|w:72|h:81|src:resources/components/portal.png|id:5|destination_id:10
+                                                         x:715|y:29|w:65|h:65|src:resources/components/portal.png|id:6|destination_id:10
+                                                         x:631.55|y:24|w:72.9|h:72.9|src:resources/components/portal.png|id:7|destination_id:11
+                                                         x:13.5|y:25|w:81|h:81|src:resources/components/portal.png|id:8|destination_id:10
+                                                         x:547.5|y:26|w:81|h:72.9|src:resources/components/portal.png|id:9|destination_id:10
+                                                         x:650|y:172|w:100|h:100|src:resources/components/portal.png|id:10|destination_id:10
+                                                         x:40|y:165|w:100|h:100|src:resources/components/portal.png|id:11|destination_id:11
+                                                         coins:0
+                                                         chests:0
+                                                         player:1
+                                                         x:352|y:70|w:51|h:35|src:resources/components/player.png
+                                                         flag:1
+                                                         x:60|y:305|w:63|h:75|src:resources/components/flag.png|reward:100
+", "Main Game Level 3", "Admin");
+insert into levels(level_info, name, user_name) values ("bkg:1
+                                                         x:0|y:0|w:800|h:450|src:resources/components/bkg0.png
                                                          static:4
                                                          x:0|y:400|w:800|h:20|src:resources/components/img0.png
                                                          x:0|y:350|w:100|h:20|src:resources/components/img0.png
@@ -93,4 +118,4 @@ insert into levels(level_info, name, user_name) values ("bkg:1
                                                          player:1
                                                          x:20|y:375|w:25|h:25|src:resources/components/player.png
                                                          flag:1
-                                                         x:763.5|y:317|w:25|h:25|src:resources/components/flag.png|reward:100", Main Game Level 1, "Admin");
+                                                         x:763.5|y:317|w:25|h:25|src:resources/components/flag.png|reward:100", "Main Game Level 4", "Admin");
