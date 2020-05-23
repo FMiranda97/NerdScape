@@ -22,7 +22,7 @@ x:420|y:230|w:36|h:34|src:resources/components/closed_chest.png|value:50
 player:1
 x:44|y:253|w:63|h:39|src:resources/components/player.png
 flag:1
-x:719|y:227|w:57|h:67|src:resources/components/flag.png|reward:100", "Main Game Level 1", "Admin");
+x:719|y:227|w:57|h:67|src:resources/components/flag.png|reward:100", "Main Game Level 2", "Admin");
 insert into levels(level_info, name, user_name) values ("bkg:1
 x:0|y:0|w:800|h:450|src:resources/components/bkg0.png
 static:3
@@ -44,7 +44,7 @@ chests:0
 player:1
 x:44.09342276925098|y:253|w:63|h:39|src:resources/components/player.png
 flag:1
-x:719|y:227|w:57|h:67|src:resources/components/flag.png|reward:100", "Main Game Level 2", "Admin");
+x:719|y:227|w:57|h:67|src:resources/components/flag.png|reward:100", "Main Game Level 3", "Admin");
 insert into levels(level_info, name, user_name) values ("bkg:1
 x:0|y:0|w:800|h:450|src:resources/components/bkg0.png
 static:1
@@ -68,7 +68,7 @@ chests:0
 player:1
 x:352|y:70|w:51|h:35|src:resources/components/player.png
 flag:1
-x:60|y:305|w:63|h:75|src:resources/components/flag.png|reward:100", "Main Game Level 1", "Admin");
+x:60|y:305|w:63|h:75|src:resources/components/flag.png|reward:100", "Main Game Level 4", "Admin");
 insert into levels(level_info, name, user_name) values ("bkg:1
 x:0|y:0|w:800|h:450|src:resources/components/bkg0.png
 static:1
