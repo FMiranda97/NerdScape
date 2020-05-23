@@ -408,4 +408,8 @@ class Level {
         });
 
     }
+
+    fakegeneratePreset(lvl){
+
+    }
 }
