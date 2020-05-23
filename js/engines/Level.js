@@ -115,6 +115,7 @@ class Level {
     }
 
     fromString(str) {
+        console.log(str+"/n");
         this.reset();
         const lines = str.split("\n");
         let index = 0;
