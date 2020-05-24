@@ -78,6 +78,11 @@ class levelDesigner extends Engine {
             }
         };
         this.upload.onsubmit = function (ev) {
+            //stops preview
+            for (let i = 0; i < me.level.enemySprites.length; i++) {
+                me.level.enemySprites[i].shouldMove = false;
+                me.level.enemySprites[i].reset();
+            }
             ev.preventDefault();
             if (!me.level.playerSprite || !me.level.flagSprite) {
                 alert("Must have a player and a flag.");

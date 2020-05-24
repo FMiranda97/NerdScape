@@ -8,10 +8,12 @@ $errors = array();
 
 // connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'registration');
+
 if(!$db){
     array_push($errors, "Server unreachable. Try again later.");
     return;
 }
+
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
     //prepare variables for use with SQL
