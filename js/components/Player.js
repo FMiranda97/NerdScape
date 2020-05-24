@@ -132,6 +132,7 @@ class Player extends Component {
         this.jumpFramesWindow = 0;
         this.Sx = 0;
         this.Sy = 0;
+        this.shots = [];
     }
 
     draw(ctx) {
