@@ -1,7 +1,6 @@
 <?php
 include('actions/check_login.php');
 include('actions/do_logout.php');
-//TODO add protections for SQL queries
 ?>
 
 <!DOCTYPE html>
