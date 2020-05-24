@@ -59,7 +59,7 @@ include('actions/do_logout.php')
             Static
         </label>
         <label>
-            <input type="radio" name = "sprite_type" value="Sniper">
+            <input type="radio" name = "sprite_type" value="Randomizer">
             Sniper
         </label>
         <label>
@@ -67,7 +67,7 @@ include('actions/do_logout.php')
             Repeater
         </label>
         <label>
-            <input type="radio" name = "sprite_type" value="Randomizer">
+            <input type="radio" name = "sprite_type" value="Sniper">
             Randomizer
         </label>
         <label>
