@@ -17,7 +17,7 @@ class MainMenu {
         this.play = new MenuComponent(engine.ctx.canvas.width/2-50, engine.ctx.canvas.height/2-25, 100, 50, IMG_START, true);
         this.save = new MenuComponent(2*engine.ctx.canvas.width/3 - 25, engine.ctx.canvas.height/2-25, 50, 50, IMG_SAVE, true);
         this.newGame = new MenuComponent(engine.ctx.canvas.width/2 -75, engine.ctx.canvas.height/2+50, 150, 50, IMG_NEW, true);
-        this.shop = new MenuComponent(engine.ctx.canvas.width/2 -25, engine.ctx.canvas.height/2-85, 50, 50, IMG_SHOP, true);
+        this.shop = new MenuComponent(engine.ctx.canvas.width/2 - 50, engine.ctx.canvas.height/2-100, 100, 50, IMG_SHOP, true);
     }
 
     draw(ctx){

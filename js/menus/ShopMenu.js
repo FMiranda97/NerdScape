@@ -15,7 +15,7 @@ class ShopMenu {
         this.engine = engine;
         this.active = false;
         this.background = new MenuComponent(engine.ctx.canvas.width / 2 - 200, engine.ctx.canvas.height / 2 - 200, 400, 400, IMG_BKG, false);
-        this.back = new MenuComponent(engine.ctx.canvas.width / 2 - 15, engine.ctx.canvas.height - 100, 30, 30, IMG_BACK, true);
+        this.back = new MenuComponent(engine.ctx.canvas.width / 2 - 30, engine.ctx.canvas.height - 100, 60, 30, IMG_BACK, true);
         this.jump = new ShopSkill(engine.ctx.canvas.width / 2 - 30, engine.ctx.canvas.height - 380, 60, 60, IMG_JUMP, true, this.engine.user.canJump, 1);
         this.double = new ShopSkill(engine.ctx.canvas.width / 2 - 30, engine.ctx.canvas.height - 300, 60, 60, IMG_DOUBLE, true, this.engine.user.canDouble, 200);
         this.lockpick = new ShopSkill(engine.ctx.canvas.width / 2 - 150, engine.ctx.canvas.height - 300, 60, 60, IMG_LOCKPICK, true, this.engine.user.canLockpick, 500);
@@ -40,7 +40,7 @@ class ShopMenu {
         this.ranged.draw(ctx);
         this.portal.draw(ctx);
         this.ranged2.draw(ctx);
-        ctx.font = "32px Comic Sans MS";
+        ctx.font = "32px Audiowide";
         ctx.fillStyle = "red";
         ctx.textAlign = "center";
         ctx.fillText("Money: " + this.engine.user.money, this.engine.ctx.canvas.width / 2, this.engine.ctx.canvas.height / 2 + 40);

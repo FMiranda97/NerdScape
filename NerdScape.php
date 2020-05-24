@@ -62,7 +62,7 @@ include('actions/do_logout.php')
 	<br>
 	<canvas id="canvas" width="800" height="450" style="display: block; margin: auto; background: #dddddd"></canvas>
 	<audio id = "music" autoplay loop>
-		<source src="resources/sounds/tricana.mp3">
+		<source src="resources/sounds/music/game_music.mp3">
 	</audio>
 </body>
 </html>
