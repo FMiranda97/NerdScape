@@ -18,7 +18,7 @@ class OptionsMenu {
         this.easy = new MenuComponent(engine.ctx.canvas.width/2-125, engine.ctx.canvas.height/2-100, 50, 50, IMG_TICKBOX, this.engine.user.difficulty === 1);
         this.medium = new MenuComponent(engine.ctx.canvas.width/2-25, engine.ctx.canvas.height/2-100, 50, 50, IMG_TICKBOX, this.engine.user.difficulty === 2);
         this.hard = new MenuComponent(engine.ctx.canvas.width/2+75, engine.ctx.canvas.height/2-100, 50, 50, IMG_TICKBOX, this.engine.user.difficulty === 3);
-        this.back = new MenuComponent(engine.ctx.canvas.width/2-30, engine.ctx.canvas.height - 100, 60, 30, IMG_BACK, true);
+        this.back = new MenuComponent(engine.ctx.canvas.width/2-45, engine.ctx.canvas.height - 100, 90, 40, IMG_BACK, true);
         this.tick = new Image();
         this.tick.src = IMG_TICK;
         //create sliders
