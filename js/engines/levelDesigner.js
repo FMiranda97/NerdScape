@@ -1,7 +1,7 @@
 "use strict";
 
 
-const NUM_STATIC_ELEMENTS = 3;
+const NUM_STATIC_ELEMENTS = 1;
 const NUM_BACKGROUNDS = 2;
 const NUM_ENEMIES = 3;
 
@@ -340,12 +340,12 @@ class levelDesigner extends Engine {
         return null;
     }
 
-    render(reqID, total_time) {
+    render(total_time) {
         for (let i = 0; i < this.level.enemySprites.length; i++) {
             this.level.enemySprites[i].update(total_time, 1, this.level.playerSprite);
         }
 
-        super.render(reqID, total_time);
+        super.render(total_time);
         //highlight selected sprite
         if (this.selectedSprite && this.rightClicked) {
             this.ctx.strokeStyle = '#f00';  // some color/style
