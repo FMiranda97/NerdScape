@@ -409,8 +409,4 @@ class Level {
         });
 
     }
-
-    fakegeneratePreset(lvl){
-
-    }
 }
