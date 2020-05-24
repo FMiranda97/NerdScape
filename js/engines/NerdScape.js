@@ -63,7 +63,7 @@ class NerdScape extends Engine {
 
     init() {
         this.music.volume = 0;
-        this.exploreMode = new Level(this.ctx, 1);
+        this.level = new Level(this.ctx, 1);
         this.initHandlers();
     }
 
