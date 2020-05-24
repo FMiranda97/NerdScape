@@ -13,9 +13,9 @@ class LevelOverMenu {
         this.active = false;
         this.won = false;
         this.background = new MenuComponent(engine.ctx.canvas.width / 2 - 100, engine.ctx.canvas.height / 2 - 150, 200, 300, IMG_BKG, false);
-        this.back = new MenuComponent(engine.ctx.canvas.width / 2 - 50 - 15, engine.ctx.canvas.height / 2 + 80, 30, 30, IMG_BACK, true);
+        this.back = new MenuComponent(engine.ctx.canvas.width / 2 - 50 - 30, engine.ctx.canvas.height / 2 + 80, 60, 30, IMG_BACK, true);
         this.retry = new MenuComponent(engine.ctx.canvas.width / 2 - 15, engine.ctx.canvas.height / 2 + 80, 30, 30, IMG_RETRY, true);
-        this.next = new MenuComponent(engine.ctx.canvas.width / 2 + 50 - 25, engine.ctx.canvas.height / 2 + 80 - 10, 50, 50, IMG_NEXT, false);
+        this.next = new MenuComponent(engine.ctx.canvas.width / 2 + 50 - 30, engine.ctx.canvas.height / 2 + 80 , 60, 30, IMG_NEXT, false);
         this.win = new MenuComponent(engine.ctx.canvas.width / 2 - 50, engine.ctx.canvas.height / 2 - 125, 100, 100, IMG_WIN, false);
         this.lose = new MenuComponent(engine.ctx.canvas.width / 2 - 50, engine.ctx.canvas.height / 2 - 125, 100, 100, IMG_LOSE, false);
     }

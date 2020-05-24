@@ -11,7 +11,7 @@ class LevelSelectionMenu {
         this.engine = engine;
         this.active = false;
         this.background = new MenuComponent(0, 0, engine.ctx.canvas.width, engine.ctx.canvas.height, IMG_BKG, false);
-        this.back = new MenuComponent(engine.ctx.canvas.width/2-15, engine.ctx.canvas.height - 45, 30, 30, IMG_BACK, true);
+        this.back = new MenuComponent(engine.ctx.canvas.width/2-30, engine.ctx.canvas.height - 45, 60, 30, IMG_BACK, true);
         this.levelBoxes = [];
         for (let j = 0; j < N_LINES; j++) {
             for (let i = 0; i < LEVELS_PER_LINE; i++) {
@@ -27,7 +27,7 @@ class LevelSelectionMenu {
         if (!this.active) return;
         this.background.draw(ctx);
         this.back.draw(ctx);
-        ctx.font = "24px Comic Sans MS";
+        ctx.font = "24px Audiowide";
         ctx.fillStyle = "blue";
         ctx.textAlign = "center";
         for (let i = 0; i < LEVELS_PER_LINE * N_LINES; i++) {

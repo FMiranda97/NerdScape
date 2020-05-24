@@ -8,9 +8,9 @@ class LevelStartMenu {
         this.engine = engine;
         this.active = false;
         this.background = new MenuComponent(engine.ctx.canvas.width / 2 - 100, engine.ctx.canvas.height / 2 - 150, 200, 300, IMG_BKG, false);
-        this.back = new MenuComponent(engine.ctx.canvas.width / 2 - 50 - 15, engine.ctx.canvas.height / 2 + 80, 30, 30, IMG_BACK, true);
-        this.options = new MenuComponent(engine.ctx.canvas.width / 2 - 15, engine.ctx.canvas.height / 2 + 80, 30, 30, IMG_OPTIONS, true);
-        this.play = new MenuComponent(engine.ctx.canvas.width / 2 + 50 - 15, engine.ctx.canvas.height / 2 + 80, 30, 30, IMG_PLAY, true);
+        this.back = new MenuComponent(engine.ctx.canvas.width / 2 - 50 - 30, engine.ctx.canvas.height / 2 + 80, 60, 30, IMG_BACK, true);
+        this.options = new MenuComponent(engine.ctx.canvas.width / 2 + 50 - 15, engine.ctx.canvas.height / 2 + 80, 30, 30, IMG_OPTIONS, true);
+        this.play = new MenuComponent(engine.ctx.canvas.width / 2  - 30, engine.ctx.canvas.height / 2 -30 , 60, 60, IMG_PLAY, true);
     }
 
     draw(ctx) {
@@ -19,7 +19,7 @@ class LevelStartMenu {
         this.back.draw(ctx);
         this.options.draw(ctx);
         this.play.draw(ctx);
-        ctx.font = "32px Comic Sans MS";
+        ctx.font = "32px Audiowide";
         ctx.fillStyle = "blue";
         ctx.textAlign = "center";
         ctx.fillText("Level " + this.engine.level.lvl, this.engine.ctx.canvas.width / 2, this.engine.ctx.canvas.height / 2 - 80);
