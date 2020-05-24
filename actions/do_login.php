@@ -7,6 +7,10 @@ $errors = array();
 
 // connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'registration');
+if(!$db){
+    array_push($errors, "Server unreachable. Try again later.");
+    return;
+}
 
 if (isset($_POST['login_user'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);

@@ -5,7 +5,7 @@ session_start();
 $db = mysqli_connect('localhost', 'root', '', 'registration');
 $response = array("status"=>"Success", "save"=>"");
 
-if(isset($_SESSION['username'])){
+if($db && isset($_SESSION['username'])){
     $username = mysqli_real_escape_string($db, $_SESSION['username']);
     $query = "SELECT save_game FROM users WHERE username = '$username'";
     $result = mysqli_query($db, $query);

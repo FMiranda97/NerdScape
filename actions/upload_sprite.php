@@ -29,6 +29,9 @@ if (isset($_POST["upload"])) {
     }
     if ($uploadOk == 1) {
         $db = mysqli_connect("localhost", "root", '', "registration");
+        if(!$db){
+            return;
+        }
         $db->begin_transaction();
         $sprite_type = mysqli_real_escape_string($db, $_POST['sprite_type']);
         $username = mysqli_real_escape_string($db, $_SESSION['username']);

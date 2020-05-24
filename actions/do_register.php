@@ -8,7 +8,10 @@ $errors = array();
 
 // connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'registration');
-
+if(!$db){
+    array_push($errors, "Server unreachable. Try again later.");
+    return;
+}
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
     //prepare variables for use with SQL
@@ -34,9 +37,9 @@ if (isset($_POST['reg_user'])) {
     // check if user exists in database
     $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
     mysqli_query($db, $user_check_query);
-    $user = mysqli_fetch_assoc($result);
 
-    if ($user) { // if user exists
+    if ($result) { // if user exists
+        $user = mysqli_fetch_assoc($result);
         if ($user['username'] === $username) {
             array_push($errors, "Username already exists");
         }
@@ -51,9 +54,12 @@ if (isset($_POST['reg_user'])) {
         $password = md5($password_1);//hash the password before saving in the database
 
         $query = "INSERT INTO users (username, email, password_hash) VALUES('$username', '$email', '$password')";
-        mysqli_query($db, $query);
-        $_SESSION['username'] = $username;
-        $_SESSION['success'] = "You are now logged in";
-        header('location: NerdScape.php');
+        if(mysqli_query($db, $query)){
+            $_SESSION['username'] = $username;
+            $_SESSION['success'] = "You are now logged in";
+            header('location: NerdScape.php');
+        }else{
+            array_push($errors, "Failed to register. Try again later.");
+        }
     }
 }

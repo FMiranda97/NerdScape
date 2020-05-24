@@ -12,8 +12,8 @@ if (isset($_POST['play'])) {
 if ($results['op'] !== 'none') {
     $db = mysqli_connect('localhost', 'root', '', 'registration');
     $query = "SELECT level_info from levels where id = $results[level]";
-    $qr = mysqli_query($db, $query);
-    $results['level_data'] = $qr->fetch_assoc()['level_info'];
+    if($db) $qr = mysqli_query($db, $query);
+    if($qr) $results['level_data'] = $qr->fetch_assoc()['level_info'];
 }
 
 echo json_encode($results);

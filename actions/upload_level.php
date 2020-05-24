@@ -15,8 +15,12 @@ if (!isset($_POST['level_info'])) {
     array_push($result['error'], "No level info.");
 }
 
+$db = mysqli_connect('localhost', 'root', '', 'registration');
+if(!$db){
+    array_push($errors, "Server unreachable. Try again later.");
+}
+
 if (count($result['error']) == 0) {
-    $db = mysqli_connect('localhost', 'root', '', 'registration');
     $level_name = mysqli_real_escape_string($db, $_POST['level_name']);
     $level_info = mysqli_real_escape_string($db, $_POST['level_info']);
     $username = mysqli_real_escape_string($db, $_SESSION['username']);
