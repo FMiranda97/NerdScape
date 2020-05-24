@@ -5,7 +5,10 @@ include('actions/do_vote.php');
 if (isset($_GET['edit'])) {
     header('location: levelDesigner.php?edit=' . $_GET['edit']);
 }
+//TODO fix bug where level 1 overlaps with selected level
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">

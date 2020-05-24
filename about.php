@@ -26,13 +26,21 @@ include('actions/do_logout.php');
         <a class="logout" href="?logout='1'">Log out</a>
     </div>
     <br>
-    NerdScape
-    <br>
-    Multimédia 2019/2020<br>
-    <br>
-    Autores:<br>
-    Francisco Miranda<br>
-    Diogo Cruz<br>
-    Inês Mendes<br>
+    <div class = "instrucoes">
+        Instruções:<br>
+<!--        TODO-->
+    </div>
+
+    <div class = "footer">
+        NerdScape
+        <br>
+        Multimédia 2019/2020<br>
+        <br>
+        Autores:<br>
+        Francisco Miranda<br>
+        Diogo Cruz<br>
+        Inês Mendes<br>
+    </div>
+
 </body>
 </html>
