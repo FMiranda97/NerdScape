@@ -3,7 +3,6 @@
 const SAVE_GAME = "user_data";
 
 
-//TODO change music
 //TODO update level database
 //TODO update MAX_LEVELS
 

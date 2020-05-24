@@ -1,6 +1,7 @@
 <?php
 include('actions/check_login.php');
 include('actions/do_logout.php');
+//TODO add protections for SQL queries
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +28,14 @@ include('actions/do_logout.php');
     </div>
     <br>
     <div class = "instrucoes">
-        Instruções:<br>
-<!--        TODO-->
+        Instructions:<br>
+        Before you start make sure to enter the shop and buy jumping as your first skill.<br>
+        In game, move with AWD or arrow keys.<br>
+        As you unlock skills you may be able to interact with in-game objects pressing F.<br>
+        Once you learn to use your lantern you can shoot it by pointing and clicking with your mouse.<br>
+        The game will auto-save whenever you finish a level.<br>
+        You can save your settings anytime by clicking the save button in the main menu.<br>
+        Have fun and stay the **** home.
     </div>
 
     <div class = "footer">
@@ -36,7 +43,7 @@ include('actions/do_logout.php');
         <br>
         Multimédia 2019/2020<br>
         <br>
-        Autores:<br>
+        Autors:<br>
         Francisco Miranda<br>
         Diogo Cruz<br>
         Inês Mendes<br>
