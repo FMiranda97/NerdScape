@@ -40,11 +40,11 @@ if (isset($_POST['reg_user'])) {
 
     if ($result) { // if user exists
         $user = mysqli_fetch_assoc($result);
-        if ($user['username'] === $username) {
+        if ($user && $user['username'] === $username) {
             array_push($errors, "Username already exists");
         }
 
-        if ($user['email'] === $email) {
+        if ($user && $user['email'] === $email) {
             array_push($errors, "email already exists");
         }
     }
