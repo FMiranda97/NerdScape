@@ -19,7 +19,7 @@ class ShopMenu {
         this.jump = new ShopSkill(engine.ctx.canvas.width / 2 - 30, engine.ctx.canvas.height - 380, 60, 60, IMG_JUMP, true, this.engine.user.canJump, 1);
         this.double = new ShopSkill(engine.ctx.canvas.width / 2 - 30, engine.ctx.canvas.height - 300, 60, 60, IMG_DOUBLE, true, this.engine.user.canDouble, 200);
         this.lockpick = new ShopSkill(engine.ctx.canvas.width / 2 - 150, engine.ctx.canvas.height - 300, 60, 60, IMG_LOCKPICK, true, this.engine.user.canLockpick, 500);
-        this.ranged = new ShopSkill(engine.ctx.canvas.width / 2 + 70, engine.ctx.canvas.height - 380, 100, 60, IMG_RANGED, true, this.engine.user.canRange, 200);
+        this.ranged = new ShopSkill(engine.ctx.canvas.width / 2 + 70, engine.ctx.canvas.height - 380, 100, 60, IMG_RANGED, true, this.engine.user.canRange, 400);
         this.portal = new ShopSkill(engine.ctx.canvas.width / 2 - 150, engine.ctx.canvas.height - 380, 60, 60, IMG_PORTAL, true, this.engine.user.canPort, 200);
         this.ranged2 = new ShopSkill(engine.ctx.canvas.width / 2 + 70, engine.ctx.canvas.height - 300, 100, 60, IMG_RANGED2, true, this.engine.user.canRange === MAX_RANGE_SPEED, 1000 - this.ranged.cost);
         this.price = "";
