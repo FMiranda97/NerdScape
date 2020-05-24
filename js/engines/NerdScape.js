@@ -30,9 +30,9 @@ function main() {
             data: {play: vars['play'], edit: vars['edit']},
             success: function (response) {
                 if (response['op'] === 'play') {
-                    ns.exploreLevel(response['level_data'], parseInt(vars['play']))
+                    ns.exploreLevel(response['level_data'], parseInt(vars['play']));
                 } else if (response['op'] === 'edit') {
-                    alert('Wrong page')
+                    alert('Wrong page');
                 } else {
                     ns.exploreLevel("bkg:0\nstatic:0\nenemies:0\nportals:0\ncoins:0\nchests:0\nplayer:0\nflag:0\n", -1);
                 }
@@ -177,7 +177,7 @@ class NerdScape extends Engine {
             dataType: "json",
             data: {},
             success: function (response) {
-                if(response.status !== "Failure" && response.save){
+                if(response.status !== "Failure" && response.save && !me.exploreMode){
                     me.user = JSON.parse(response.save);
                     me.optionsMenu = new OptionsMenu(me);
                 }
