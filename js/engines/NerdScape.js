@@ -22,6 +22,9 @@ function main() {
         let vars = {};
         window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
             vars[key] = value;
+            if(vars['play']){
+                ns.exploreMode = true;
+            }
         });
         jQuery.ajax({
             type: "post",
@@ -177,7 +180,7 @@ class NerdScape extends Engine {
             dataType: "json",
             data: {},
             success: function (response) {
-                if(response.status !== "Failure" && response.save && !me.exploreMode){
+                if(response.status !== "Failure" && response.save){
                     me.user = JSON.parse(response.save);
                     me.optionsMenu = new OptionsMenu(me);
                 }
