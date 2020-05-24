@@ -60,7 +60,10 @@ class NerdScape extends Engine {
 
     init() {
         this.music.volume = 0;
-        this.level = new Level(this.ctx, 1);
+        level = new Level(this.ctx, 1);
+        if(!this.exploreMode){
+            this.level = level;
+        }
         this.initHandlers();
     }
 
@@ -177,7 +180,7 @@ class NerdScape extends Engine {
             dataType: "json",
             data: {},
             success: function (response) {
-                if(response.status !== "Failure" && response.save && !me.exploreMode){
+                if(response.status !== "Failure" && response.save){
                     me.user = JSON.parse(response.save);
                     me.optionsMenu = new OptionsMenu(me);
                 }
