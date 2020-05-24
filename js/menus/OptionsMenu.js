@@ -65,7 +65,7 @@ class OptionsMenu {
         ctx.moveTo(SLIDER_X_MIN, slider.y+15);
         if(slider === this.musicSlider) {
             ctx.lineTo(SLIDER_X_MIN + SLIDER_LEN*this.engine.music.volume, slider.y+15);
-            label_text = "Music Volume";
+            label_text = "music Volume";
         }
         else {
             ctx.lineTo(SLIDER_X_MIN + SLIDER_LEN*this.engine.user.sfxVolume, slider.y+15);

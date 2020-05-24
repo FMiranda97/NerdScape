@@ -9,14 +9,13 @@ const SAVE_GAME = "user_data";
 (function () {
     window.addEventListener("load", main);
 }());
-
+const MUSIC_FILE = "";
 
 function main() {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
-    const music = document.getElementById("music");
     const form = document.getElementById("level_selector");
-    const ns = new NerdScape(ctx, music);
+    const ns = new NerdScape(ctx);
     if (form) {
         //ajax to get level
         let vars = {};
@@ -46,11 +45,11 @@ function main() {
 
 class NerdScape extends Engine {
 
-    constructor(ctx, music) {
+    constructor(ctx) {
         super(ctx);
         this.exploreMode = false;
         this.loadGame();
-        this.music = music;
+        this.music = new Audio("resources/sounds/music/game_music.mp3");
         this.mainMenu = new MainMenu(this);
         this.levelStartMenu = new LevelStartMenu(this);
         this.levelOverMenu = new LevelOverMenu(this);
@@ -65,6 +64,20 @@ class NerdScape extends Engine {
         this.music.volume = 0;
         this.level = new Level(this.ctx);
         this.initHandlers();
+        this.initSfx();
+    }
+
+    initSfx(){
+        this.sfxDarkShot = new Audio("resources/sounds/music/dark_shot.mp3");
+        this.sfxDyingEnemy = new Audio("resources/sounds/music/dying_enemy.mp3");
+        this.sfxGrabCoin = new Audio("resources/sounds/music/grab_coin.mp3");
+        this.sfxHeroDeath = new Audio("resources/sounds/music/hero_death.mp3");
+        this.sfxJump = new Audio("resources/sounds/music/jump.mp3");
+        this.sfxLightShot = new Audio("resources/sounds/music/light_shot.mp3");
+        this.sfxMenu = new Audio("resources/sounds/music/menu.mp3");
+        this.sfxOpenChest = new Audio("resources/sounds/music/open_chest.mp3");
+        this.sfxPortal = new Audio("resources/sounds/music/Portal.mp3");
+        this.sfxWin = new Audio("resources/sounds/music/win.mp3");
     }
 
     initHandlers() {
