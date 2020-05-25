@@ -222,10 +222,10 @@ class NerdScape extends Engine {
 
     activateExplorer() {
         if (!this.exploreMode) return;
-        if (this.levelStartMenu && (!this.level.active || this.level.isOver() !== NOT_OVER) && !this.levelOverMenu.active) this.levelStartMenu.active = true;
+        if (this.levelStartMenu && this.optionsMenu && (!this.level.active || this.level.isOver() !== NOT_OVER) && !this.levelOverMenu.active && !this.optionsMenu.active) this.levelStartMenu.active = true;
         if (this.levelSelectionMenu) this.levelSelectionMenu.active = false;
         if (this.mainMenu) this.mainMenu.active = false;
-        if (this.optionsMenu) this.optionsMenu.active = false;
+        // if (this.optionsMenu) this.optionsMenu.active = false;
         if (this.shopMenu) this.shopMenu.active = false;
     }
 }
