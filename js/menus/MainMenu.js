@@ -42,6 +42,7 @@ class MainMenu {
 
     clickStart(ev){
         if(this.play.mouseOverBoundingBox(ev)){
+            this.engine.sfxMenu.play();
             this.active = false;
             this.engine.levelSelectionMenu.active = true;
         }
@@ -49,6 +50,7 @@ class MainMenu {
 
     clickOptions(ev){
         if(this.options.mouseOverBoundingBox(ev)){
+            this.engine.sfxMenu.play();
             this.active = false;
             this.engine.optionsMenu.active = true;
             this.engine.optionsMenu.easy.clickable = true;
@@ -60,13 +62,14 @@ class MainMenu {
 
     clickSave(ev){
         if(this.save.mouseOverBoundingBox(ev)){
+            this.engine.sfxMenu.play();
             this.engine.saveGame();
         }
     }
 
     clickNew(ev){
         if(this.newGame.mouseOverBoundingBox(ev)){
-            localStorage.removeItem(SAVE_GAME);
+            this.engine.sfxMenu.play();
             this.engine.user = new User();
             this.engine.optionsMenu = new OptionsMenu(this.engine);
             this.engine.shopMenu = new ShopMenu(this.engine);
@@ -75,6 +78,7 @@ class MainMenu {
 
     clickShop(ev){
         if(this.shop.mouseOverBoundingBox(ev)){
+            this.engine.sfxMenu.play();
             this.active = false;
             this.engine.shopMenu.active = true;
         }

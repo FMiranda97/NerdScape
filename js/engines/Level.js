@@ -256,23 +256,23 @@ class Level {
         }
     }
 
-    update(total_time, keysPressed, user) {
+    update(total_time, keysPressed, user, engine) {
         //move enemies
         if (!this.active) return;
-        this.updateEnemies(total_time, user.difficulty);
-        this.updatePlayer(user);
-        this.updatePortals(keysPressed, user);
-        this.updateChest(keysPressed, user);
+        this.updateEnemies(total_time, user.difficulty, engine);
+        this.updatePlayer(user, engine);
+        this.updatePortals(keysPressed, user, engine);
+        this.updateChest(keysPressed, user, engine);
         this.updateLife();
-        this.updateWin(total_time, user.difficulty);
-        this.updateCoin();
+        this.updateWin(total_time, user.difficulty, engine);
+        this.updateCoin(engine);
     }
 
-    updateEnemies(total_time, difficulty) {
+    updateEnemies(total_time, difficulty, engine) {
         let me = this;
         for (let i = 0; i < this.enemySprites.length; i++) {
             if(!this.enemySprites[i].active) continue;
-            this.enemySprites[i].update(total_time, difficulty, this.playerSprite);
+            this.enemySprites[i].update(total_time, difficulty, this.playerSprite, engine.sfxLightShot);
             //check if projectile hits static components
             for (let j = 0; j < this.enemySprites[i].shots.length; j++) {
                 for (let k = 0; k < this.staticSprites.length; k++) {
@@ -290,6 +290,7 @@ class Level {
         for(let shot of this.playerSprite.shots){
             for (let enemy of this.enemySprites)
             if(enemy.active && shot.intersects(enemy)){
+                engine.sfxDyingEnemy.play();
                 this.body_count++;
                 enemy.active = false;
                 enemy.shots = [];
@@ -297,9 +298,9 @@ class Level {
         }
     }
 
-    updatePlayer(user) {
+    updatePlayer(user, engine) {
         let me = this;
-        this.playerSprite.update(user, this.staticSprites, this.ctx.canvas);
+        this.playerSprite.update(user, this.staticSprites, this.ctx.canvas, engine.sfxJump);
         this.playerSprite.shots = this.playerSprite.shots.filter(function (value) {
             for(let sp of me.staticSprites){
                 if(sp.intersects(value) || sp.intersectsCanvas()) return false;
@@ -308,30 +309,31 @@ class Level {
         });
     }
 
-    updatePortals(keysPressed, user) {
+    updatePortals(keysPressed, user, engine) {
         if (!keysPressed["f"] || !user.canPort) return;
         for (let i = 0; i < this.portalSprites.length; i++) {
             if (this.playerSprite.intersects(this.portalSprites[i])) {
                 let destination = this.getPortal(this.portalSprites[i].destination_id);
-                destination.port(this.playerSprite);
+                destination.port(this.playerSprite, engine.sfxPortal);
                 keysPressed["f"] = false;
                 return;
             }
         }
     }
 
-    updateCoin() {
+    updateCoin(engine) {
         for (let i = 0; i < this.coinSprites.length; i++) {
-            if (this.coinSprites[i].intersects(this.playerSprite))
-                this.flagSprite.reward += this.coinSprites[i].collect();
+            if (this.coinSprites[i].intersects(this.playerSprite)){
+                this.flagSprite.reward += this.coinSprites[i].collect(engine.sfxGrabCoin);
+            }
         }
     }
 
-    updateChest(keysPressed, user) {
+    updateChest(keysPressed, user, engine) {
         if (!keysPressed["f"] || !user.canLockpick) return;
         for(let chest of this.chestSprites){
             if(chest.intersects(this.playerSprite)){
-                this.flagSprite.reward += chest.collect(user);
+                this.flagSprite.reward += chest.collect(user, engine.sfxOpenChest);
             }
         }
     }
@@ -351,9 +353,10 @@ class Level {
         }
     }
 
-    updateWin(total_time, difficulty) {
+    updateWin(total_time, difficulty, engine) {
         this.timestamp = total_time;
         if (this.playerSprite.intersects(this.flagSprite) && this.won === false){
+            engine.sfxWin.play();
             this.won = true;
             let beat_time = this.timestamp - this.init_time;
             $.ajax({

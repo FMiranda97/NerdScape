@@ -9,7 +9,6 @@ const SAVE_GAME = "user_data";
 (function () {
     window.addEventListener("load", main);
 }());
-const MUSIC_FILE = "";
 
 function main() {
     const canvas = document.getElementById("canvas");
@@ -68,16 +67,24 @@ class NerdScape extends Engine {
     }
 
     initSfx(){
-        this.sfxDarkShot = new Audio("resources/sounds/music/dark_shot.mp3");
-        this.sfxDyingEnemy = new Audio("resources/sounds/music/dying_enemy.mp3");
-        this.sfxGrabCoin = new Audio("resources/sounds/music/grab_coin.mp3");
-        this.sfxHeroDeath = new Audio("resources/sounds/music/hero_death.mp3");
-        this.sfxJump = new Audio("resources/sounds/music/jump.mp3");
-        this.sfxLightShot = new Audio("resources/sounds/music/light_shot.mp3");
-        this.sfxMenu = new Audio("resources/sounds/music/menu.mp3");
-        this.sfxOpenChest = new Audio("resources/sounds/music/open_chest.mp3");
-        this.sfxPortal = new Audio("resources/sounds/music/Portal.mp3");
-        this.sfxWin = new Audio("resources/sounds/music/win.mp3");
+        this.sfxDarkShot = new Audio("resources/sounds/SFX/dark_shot.mp3");
+        this.sfxDyingEnemy = new Audio("resources/sounds/SFX/dying_enemy.mp3");
+        this.sfxGrabCoin = new Audio("resources/sounds/SFX/grab_coin.mp3");
+        this.sfxHeroDeath = new Audio("resources/sounds/SFX/hero_death.mp3");
+        this.sfxJump = new Audio("resources/sounds/SFX/jump.mp3");
+        this.sfxLightShot = new Audio("resources/sounds/SFX/light_shot.mp3");
+        this.sfxMenu = new Audio("resources/sounds/SFX/menu.mp3");
+        this.sfxOpenChest = new Audio("resources/sounds/SFX/open_chest.mp3");
+        this.sfxPortal = new Audio("resources/sounds/SFX/Portal.mp3");
+        this.sfxWin = new Audio("resources/sounds/SFX/win.mp3");
+    }
+
+    updateSfxVolume(){
+        for(let field in this){
+            if(field !== "music" && this[field] instanceof Audio){
+                this[field].volume = this.user.sfxVolume;
+            }
+        }
     }
 
     initHandlers() {
@@ -89,6 +96,7 @@ class NerdScape extends Engine {
             me.clickSprite(ev);
             if (me.level.active && me.user.canRange) {
                 me.level.playerSprite.shoot(ev, me.user);
+                me.sfxDarkShot.play();
             }
         };
         let keyDown = function (ev) {
@@ -145,7 +153,7 @@ class NerdScape extends Engine {
         this.total_time = total_time;
         //move sprites
         if (this.user)
-            this.level.update(total_time, this.keysPressed, this.user);
+            this.level.update(total_time, this.keysPressed, this.user, this);
         //check if player still alive
         //draw necessary sprites
         super.render(total_time);
@@ -162,7 +170,10 @@ class NerdScape extends Engine {
                 }
                 if (this.user.maxLevel === this.level.lvl) this.user.maxLevel++;
                 this.saveGame();
-            } else this.levelOverMenu.won = false;
+            } else{
+                this.levelOverMenu.won = false;
+                this.sfxHeroDeath.play();
+            }
         }
         this.activateExplorer();
         if (this.levelStartMenu) this.levelStartMenu.draw(this.ctx, total_time);
@@ -174,7 +185,6 @@ class NerdScape extends Engine {
     }
 
     saveGame() {
-        //localStorage.setItem(SAVE_GAME, JSON.stringify(this.user));
         let save = JSON.stringify(this.user);
         $.ajax({
             type: "post",

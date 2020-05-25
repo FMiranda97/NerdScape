@@ -92,18 +92,22 @@ class OptionsMenu {
 
     clickDifficulty(ev) {
         if (this.easy.mouseOverBoundingBox(ev) && this.easy.clickable) {
+            this.engine.sfxMenu.play();
             this.engine.user.difficulty = 1;
         }
         if (this.medium.mouseOverBoundingBox(ev) && this.medium.clickable) {
+            this.engine.sfxMenu.play();
             this.engine.user.difficulty = 2;
         }
         if (this.hard.mouseOverBoundingBox(ev) && this.hard.clickable) {
+            this.engine.sfxMenu.play();
             this.engine.user.difficulty = 3;
         }
     }
 
     clickBack(ev) {
         if (this.back.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.play();
             this.active = false;
             this.callerMenu.active = true;
             this.easy.clickable = false;
@@ -130,6 +134,7 @@ class OptionsMenu {
                 this.musicSlider.x = SLIDER_X_MIN + SLIDER_LEN * this.engine.music.volume - SLIDER_WIDTH/2;
             }else if(this.selectedSlider === this.sfxSlider){
                 this.engine.user.sfxVolume = x/SLIDER_LEN;
+                this.engine.updateSfxVolume();
                 this.sfxSlider.x = SLIDER_X_MIN + SLIDER_LEN * this.engine.user.sfxVolume - SLIDER_WIDTH/2;
             }
         }

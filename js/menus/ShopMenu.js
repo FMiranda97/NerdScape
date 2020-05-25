@@ -62,6 +62,7 @@ class ShopMenu {
 
     clickBack(ev) {
         if (this.back.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.play();
             this.active = false;
             this.engine.mainMenu.active = true;
         }
@@ -69,6 +70,7 @@ class ShopMenu {
 
     clickJump(ev) {
         if (!this.jump.isBought && this.engine.user.money >= this.jump.cost && this.jump.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.play();
             this.engine.user.money -= this.jump.cost;
             this.jump.isBought = true;
             this.engine.user.canJump = true;
@@ -77,6 +79,7 @@ class ShopMenu {
 
     clickDouble(ev) {
         if (!this.double.isBought && this.engine.user.money >= this.double.cost && this.double.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.play();
             this.engine.user.money -= this.double.cost;
             this.double.isBought = true;
             this.engine.user.canDouble = true;
@@ -85,6 +88,7 @@ class ShopMenu {
 
     clickLockpick(ev) {
         if (!this.lockpick.isBought && this.engine.user.money >= this.lockpick.cost && this.lockpick.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.play();
             this.engine.user.money -= this.lockpick.cost;
             this.lockpick.isBought = true;
             this.engine.user.canLockpick = true;
@@ -93,6 +97,7 @@ class ShopMenu {
 
     clickRanged(ev) {
         if (!this.ranged.isBought && this.engine.user.money >= this.ranged.cost && this.ranged.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.play();
             this.engine.user.money -= this.ranged.cost;
             this.ranged.isBought = true;
             this.engine.user.canRange = 1;
@@ -102,6 +107,7 @@ class ShopMenu {
 
     clickPortal(ev) {
         if (!this.portal.isBought && this.engine.user.money >= this.portal.cost && this.portal.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.play();
             this.engine.user.money -= this.portal.cost;
             this.portal.isBought = true;
             this.engine.user.canPort = true;
@@ -110,6 +116,7 @@ class ShopMenu {
 
     clickRanged2(ev) {
         if (this.ranged.isBought && !this.ranged2.isBought && this.engine.user.money >= this.ranged2.cost && this.ranged2.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.play();
             this.engine.user.money -= this.ranged2.cost;
             this.ranged2.isBought = true;
             this.engine.user.canRange = MAX_RANGE_SPEED;

@@ -43,9 +43,9 @@ class Player extends Component {
         }
     }
 
-    update(user, staticSprites, canvas, enemySprites){
-        this.updatePosition(user, staticSprites, canvas);
-        this.updateShots(user, canvas, enemySprites);
+    update(user, staticSprites, canvas, sfx){
+        this.updatePosition(user, staticSprites, canvas, false, sfx);
+        this.updateShots(user);
     }
 
     updateShots(user){
@@ -56,8 +56,8 @@ class Player extends Component {
         }
     }
 
-    updatePosition(user, staticSprites, canvas, call_super) {
-        if(call_super !== undefined){
+    updatePosition(user, staticSprites, canvas, call_super, sfx) {
+        if(call_super){
             super.updatePosition(user, staticSprites, canvas, call_super);
             return;
         }
@@ -90,6 +90,7 @@ class Player extends Component {
         }
         if (this.jumpFramesWindow === 5 && (user.canJump && !canD && !this.hasJumped || user.canDouble && this.hasJumped && !this.hasDoubled)) {
             this.Sy = JUMP_SPEED * this.height;
+            sfx.play();
             if (!this.hasJumped)
                 this.hasJumped = true;
             else

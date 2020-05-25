@@ -12,9 +12,9 @@ class Enemy extends Component {
         this.active = true;
     }
 
-    update(total_time, difficulty, player) {
+    update(total_time, difficulty, player, sfxLightShot) {
         if (this.shouldMove && this.movements.length > 0) {
-            let isOver = this.movements[this.currMove].execute(this, total_time - this.time, difficulty, player);
+            let isOver = this.movements[this.currMove].execute(this, total_time - this.time, difficulty, player, sfxLightShot);
             if(this.movements[this.currMove].Sx < 0) this.movedBack = true;
             else if(this.movements[this.currMove].Sx > 0) this.movedBack = false;
             if (isOver)

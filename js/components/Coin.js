@@ -21,8 +21,9 @@ class Coin extends Component{
         this.active = true;
     }
 
-    collect(){
+    collect(sfx){
         if(this.active){
+            sfx.play();
             this.active = false;
             return this.value;
         }else return 0;

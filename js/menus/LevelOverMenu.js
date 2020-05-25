@@ -53,6 +53,7 @@ class LevelOverMenu {
 
     clickBack(ev) {
         if (this.back.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.play();
             this.active = false;
             this.engine.mainMenu.active = true;
         }
@@ -60,6 +61,7 @@ class LevelOverMenu {
 
     clickRetry(ev) {
         if (this.retry.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.play();
             this.active = false;
             this.won = false;
             this.engine.level.reset();
@@ -69,6 +71,7 @@ class LevelOverMenu {
 
     clickNext(ev) {
         if (this.next.clickable && this.next.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.play();
             this.active = false;
             this.engine.level.nextLevel();
             this.engine.levelStartMenu.active = true;

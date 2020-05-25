@@ -38,7 +38,7 @@ class Movement {
         return index;
     }
 
-    execute(enemy, time_diff, difficulty, player) {
+    execute(enemy, time_diff, difficulty, player, sfxLightShot) {
         //initial conditions
         if (this.currt === 0) {
             this.Sx = this.iSx;
@@ -46,7 +46,10 @@ class Movement {
         }
         //decide if should do action
         if(this.freq > 0){
-            if(this.actiont === 0) enemy.doAction(player);
+            if(this.actiont === 0) {
+                enemy.doAction(player);
+                sfxLightShot.play();
+            }
             this.actiont += time_diff * difficulty;
             let T = 1000/this.freq;
             if(this.actiont > T) this.actiont = 0;

@@ -13,9 +13,9 @@ class Randomizer extends Enemy {
         this.shots.push(new Projectile(this.x, this.y, this.width, this.height, this.projectle_img));
     }
 
-    update(total_time, difficulty) {
+    update(total_time, difficulty, player, sfxLightShot) {
         let me = this;
-        super.update(total_time, difficulty);
+        super.update(total_time, difficulty, player, sfxLightShot);
         for (let i = 0; i < this.shots.length; i++) {
             if (this.shots[i].update(difficulty))
                 this.shots = this.shots.filter(function (value) {return value !== me.shots[i];});
