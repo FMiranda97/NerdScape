@@ -299,7 +299,7 @@ class levelDesigner extends Engine {
         //chest
         this.chestImg = document.createElement('img');
         docFrag.append(this.chestImg);
-        this.ajaxUnique(this.chestImg, "chest", resdir, ext);
+        this.ajaxUnique(this.chestImg, "Chest", resdir, ext);
 
         //append to document
         unique_container.appendChild(docFrag);
