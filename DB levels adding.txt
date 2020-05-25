@@ -1,6 +1,6 @@
-insert into users(username, email, password_hash) values("Admin", "brugesmiranda@gmail.com", "cb4ab931fd2ebe2400506d1aa26cca7e");
-
-
+--Admin with password "doe"
+insert into users(username, email, password_hash) values("Admin", "johndoe@mail.com", "ad695f53ae7569fb981fc95598e27e67");
+--Add levels for main game
 insert into levels(level_info, name, user_name) values ("bkg:1
 x:0|y:0|w:800|h:450|src:resources/components/bkg0.png
 static:1
