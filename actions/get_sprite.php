@@ -1,7 +1,7 @@
 <?php
 session_start();
 $result = array('status'=>'Success', 'sprites'=>array());
-$db = mysqli_connect('localhost','root', '', 'registration');
+include("connect.php");
 if($db){
     $query = "SELECT image_name FROM sprite WHERE user_name = '$_SESSION[username]' AND type = '$_POST[type]'";
     $query_result = mysqli_query($db, $query);
