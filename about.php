@@ -35,7 +35,7 @@ include('actions/do_logout.php');
         Once you learn to use your lantern you can shoot it by pointing and clicking with your mouse.<br>
         The game will auto-save whenever you finish a level.<br>
         You can save your settings anytime by clicking the save button in the main menu.<br>
-        Have fun and stay the **** home.
+        Have fun and stay home.
     </article>
 
     <footer class="footer">
