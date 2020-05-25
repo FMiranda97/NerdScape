@@ -5,6 +5,7 @@ const SAVE_GAME = "user_data";
 
 //TODO update level database
 //TODO update MAX_LEVELS
+//TODO save music volume
 
 (function () {
     window.addEventListener("load", main);
@@ -225,7 +226,6 @@ class NerdScape extends Engine {
         if (this.levelStartMenu && this.optionsMenu && (!this.level.active || this.level.isOver() !== NOT_OVER) && !this.levelOverMenu.active && !this.optionsMenu.active) this.levelStartMenu.active = true;
         if (this.levelSelectionMenu) this.levelSelectionMenu.active = false;
         if (this.mainMenu) this.mainMenu.active = false;
-        // if (this.optionsMenu) this.optionsMenu.active = false;
         if (this.shopMenu) this.shopMenu.active = false;
     }
 }

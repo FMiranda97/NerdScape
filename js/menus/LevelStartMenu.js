@@ -38,7 +38,7 @@ class LevelStartMenu {
     }
 
     clickBack(ev) {
-        if (this.back.mouseOverBoundingBox(ev)) {
+        if (this.back.mouseOverBoundingBox(ev) && !this.engine.exploreMode) {
             this.engine.sfxMenu.play();
             this.active = false;
             this.engine.mainMenu.active = true;
@@ -55,7 +55,7 @@ class LevelStartMenu {
     }
 
     clickPlay(ev) {
-        if (this.play.mouseOverBoundingBox(ev) && this.engine.level.lvl) {
+        if (this.play.mouseOverBoundingBox(ev) && this.engine.level.playerSprite) {
             this.engine.sfxMenu.play();
             this.active = false;
             this.engine.level.start(this.engine.total_time);
