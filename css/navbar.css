@@ -32,7 +32,7 @@
 
 /* Add a color to the active/current link */
 .topnav a.active {
-    background-color: #4CAF50;
+    background-color: rgb(99, 113, 187);
     color: white;
 }
 
@@ -45,11 +45,9 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #333;
     color: white;
     text-align: center;
-}
-
-.instrucoes {
-
+    margin: 5px;
+    padding: 15px;
 }

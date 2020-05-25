@@ -1,0 +1,14 @@
+body{
+	background-image: url("../resources/pages/background7.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
+
+.register,.login{
+    width: 20%;
+    margin:auto;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.50);
+    color: white;
+}

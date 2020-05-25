@@ -30,6 +30,7 @@ include('actions/do_logout.php')
     <script type="text/javascript" src="js/enemies/Movement.js" defer></script>
     <script type="text/javascript" src="js/components/Chest.js" defer></script>
 
+    <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/levelDesigner.css">
     <link rel="stylesheet" type="text/css" href="css/navbar.css">
 
@@ -107,11 +108,13 @@ include('actions/do_logout.php')
 
         <figure>
             <form id="createLevelbtn" method="post">
-                <label>Level name:
+                <label>
+                    Level name:
                     <input type="text" name="name" value="my level">
                 </label>
                 <input type="submit" value="Upload">
             </form>
+
 
             Instructions <br>
             <label>
@@ -145,28 +148,28 @@ include('actions/do_logout.php')
             <textarea id="angle"></textarea>
         </label>
         <br>
-        <div id="enemyEditor">
+        <section id="enemyEditor">
             <button id="insertMovement">Insert Movement</button>
             <button id="previewMovement">Preview Movement</button>
             <br>
             <label class="a">SpeedX SpeedY AccelerationX AccelerationY Duration(ms) ActionFrequency</label>
-            <div id="movements"></div>
-        </div>
-        <div id="portalEditor">
+            <section id="movements"></section>
+        </section>
+        <section id="portalEditor">
             <label>destination id =
                 <textarea id="dest_id"></textarea>
             </label>
-        </div>
-        <div id="flagEditor">
+        </section>
+        <section id="flagEditor">
             <label>level reward =
                 <textarea id="reward"></textarea>
             </label>
-        </div>
-        <div id="coinEditor">
+        </section>
+        <section id="coinEditor">
             <label>coin value =
                 <textarea id="value"></textarea>
             </label>
-        </div>
+        </section>
     </div>
 </body>
 

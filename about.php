@@ -11,6 +11,7 @@ include('actions/do_logout.php');
 
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/navbar.css">
     <link rel="stylesheet" type="text/css" href="css/table.css">
     <link rel="stylesheet" type="text/css" href="css/about.css">
@@ -28,14 +29,16 @@ include('actions/do_logout.php');
     </nav>
     <br>
     <article class="instrucoes">
-        <h2>Instructions:</h2><br>
-        Before you start make sure to enter the shop and buy jumping as your first skill.<br>
-        In game, move with AWD or arrow keys.<br>
-        As you unlock skills you may be able to interact with in-game objects pressing F.<br>
-        Once you learn to use your lantern you can shoot it by pointing and clicking with your mouse.<br>
-        The game will auto-save whenever you finish a level.<br>
-        You can save your settings anytime by clicking the save button in the main menu.<br>
-        Have fun and stay the **** home.
+        <h2>Instructions:</h2>
+        <section>
+            Before you start make sure to enter the shop and buy jumping as your first skill.<br>
+            In game, move with AWD or arrow keys.<br>
+            As you unlock skills you may be able to interact with in-game objects pressing F.<br>
+            Once you learn to use your lantern you can shoot it by pointing and clicking with your mouse.<br>
+            The game will auto-save whenever you finish a level.<br>
+            You can save your settings anytime by clicking the save button in the main menu.<br>
+            Have fun and stay the **** home.
+        </section>
     </article>
 
     <footer class="footer">

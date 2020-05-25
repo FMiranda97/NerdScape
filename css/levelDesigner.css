@@ -1,8 +1,30 @@
+figure{
+	background-color: beige;
+	border: 5px solid transparent;
+	border-color: #333;
+	width: fit-content;
+	padding: 10px;
+	margin: 10px auto 10px auto;
+}
+
+figure > p{
+	margin:0px;
+}
 form{
 	position: relative;
 	text-align: center;
+	width: fit-content;
+	margin:auto;
+	background-color: rgba(0, 0, 0, 0.7);
+	
 }
+form > label{
+	color:white;
 
+}
+form > input{
+	color:white;
+}
 span{
 	padding: 25px;
 }

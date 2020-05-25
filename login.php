@@ -7,6 +7,7 @@
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="css/navbar.css">
 
+    <link rel="stylesheet" type="text/css" href="css/common.css">
 </head>
 
 <body>
@@ -16,7 +17,7 @@
     </nav>
     <br>
 
-    <form method="post" action="login.php">
+    <form method="post" action="login.php" class="login">
         <?php include('page_complements/errors.php') ?>
         <label for="username">Username or e-mail:</label><br>
         <input type="text" id="username" name="username" value=""><br>
