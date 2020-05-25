@@ -22,7 +22,10 @@ class LevelStartMenu {
         ctx.font = "32px Audiowide";
         ctx.fillStyle = "blue";
         ctx.textAlign = "center";
-        ctx.fillText("Level " + this.engine.level.lvl, this.engine.ctx.canvas.width / 2, this.engine.ctx.canvas.height / 2 - 80);
+        let level;
+        if(!this.engine.level.lvl) level = "Explorer";
+        else level = "Level " + this.engine.level.lvl;
+        ctx.fillText(level, this.engine.ctx.canvas.width / 2, this.engine.ctx.canvas.height / 2 - 80);
 
     }
 
@@ -52,7 +55,7 @@ class LevelStartMenu {
     }
 
     clickPlay(ev) {
-        if (this.play.mouseOverBoundingBox(ev)) {
+        if (this.play.mouseOverBoundingBox(ev) && this.engine.level.lvl) {
             this.engine.sfxMenu.play();
             this.active = false;
             this.engine.level.start(this.engine.total_time);
