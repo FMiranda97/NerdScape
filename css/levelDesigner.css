@@ -18,9 +18,18 @@ form{
 	background-color: rgba(0, 0, 0, 0.7);
 	
 }
+figure > form {
+	background-color: white;
+}
+figure > form > label {
+	color: black;
+	background-color: white;
+}
 form > label{
 	color:white;
-
+}
+.black_button {
+	color: black;
 }
 form > input{
 	color:white;

@@ -112,7 +112,7 @@ include('actions/do_logout.php')
                     Level name:
                     <input type="text" name="name" value="my level">
                 </label>
-                <input type="submit" value="Upload">
+                <input type="submit" value="Upload" class="black_button">
             </form>
 
 
