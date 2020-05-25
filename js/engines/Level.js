@@ -3,7 +3,7 @@ const NOT_STARTED = -1;
 const NOT_OVER = 0;
 const LOST = 1;
 const WON = 2;
-const MAX_LEVEL = 4;
+const MAX_LEVEL = 15;
 
 class Level {
     constructor(ctx, lvl) {

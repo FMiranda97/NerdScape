@@ -1,12 +1,5 @@
 "use strict";
 
-const SAVE_GAME = "user_data";
-
-
-//TODO update level database
-//TODO update MAX_LEVELS
-//TODO save music volume
-
 (function () {
     window.addEventListener("load", main);
 }());
