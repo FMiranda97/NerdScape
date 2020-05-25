@@ -22,7 +22,7 @@ class OptionsMenu {
         this.tick = new Image();
         this.tick.src = IMG_TICK;
         //create sliders
-        this.musicSlider = new MenuComponent(250 - SLIDER_WIDTH/2, 250-15, SLIDER_WIDTH, 30, IMG_SLIDER1, true);
+        this.musicSlider = new MenuComponent(250 - SLIDER_WIDTH/2 + SLIDER_LEN*this.engine.user.musicVolume, 250-15, SLIDER_WIDTH, 30, IMG_SLIDER1, true);
         this.sfxSlider = new MenuComponent(250 - SLIDER_WIDTH/2 + SLIDER_LEN*this.engine.user.sfxVolume, 300-15, SLIDER_WIDTH, 30, IMG_SLIDER2, true);
         let me = this;
         let mouseHandler = function(ev){
@@ -64,7 +64,7 @@ class OptionsMenu {
         ctx.beginPath();
         ctx.moveTo(SLIDER_X_MIN, slider.y+15);
         if(slider === this.musicSlider) {
-            ctx.lineTo(SLIDER_X_MIN + SLIDER_LEN*this.engine.music.volume, slider.y+15);
+            ctx.lineTo(SLIDER_X_MIN + SLIDER_LEN*this.engine.user.musicVolume, slider.y+15);
             label_text = "music Volume";
         }
         else {
@@ -121,7 +121,7 @@ class OptionsMenu {
         if(ev.type === "mousedown"){
             if(this.musicSlider.mouseOverBoundingBox(ev)) {
                 this.selectedSlider = this.musicSlider;
-                this.engine.music.play();}
+            }
             if(this.sfxSlider.mouseOverBoundingBox(ev)) this.selectedSlider = this.sfxSlider;
         }else if(ev.type === "mouseup"){
             this.selectedSlider = null;
@@ -130,7 +130,8 @@ class OptionsMenu {
             if(x < 0) x = 0;
             if(x > SLIDER_LEN) x = SLIDER_LEN;
             if(this.selectedSlider === this.musicSlider){
-                this.engine.music.volume = x/SLIDER_LEN;
+                this.engine.user.musicVolume = x/SLIDER_LEN;
+                this.engine.music.volume = this.engine.user.musicVolume;
                 this.musicSlider.x = SLIDER_X_MIN + SLIDER_LEN * this.engine.music.volume - SLIDER_WIDTH/2;
             }else if(this.selectedSlider === this.sfxSlider){
                 this.engine.user.sfxVolume = x/SLIDER_LEN;
