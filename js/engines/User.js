@@ -9,6 +9,7 @@ class User {
             this.maxLevel = 1;
             this.difficulty = 1;
             this.sfxVolume = 1;
+            this.musicVolume = 1;
             this.canJump = false;
             this.canDouble = false;
             this.canPort = false;

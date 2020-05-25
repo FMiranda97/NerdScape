@@ -23,6 +23,7 @@ class Coin extends Component{
 
     collect(sfx){
         if(this.active){
+            sfx.currentTime = 0;
             sfx.play();
             this.active = false;
             return this.value;

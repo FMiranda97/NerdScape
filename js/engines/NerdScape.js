@@ -61,7 +61,7 @@ class NerdScape extends Engine {
     }
 
     init() {
-        this.music.volume = 0;
+        this.music.volume = this.user.musicVolume;
         this.level = new Level(this.ctx);
         this.initHandlers();
         this.initSfx();
@@ -97,6 +97,7 @@ class NerdScape extends Engine {
             me.clickSprite(ev);
             if (me.level.active && me.user.canRange) {
                 me.level.playerSprite.shoot(ev, me.user);
+                me.sfxDarkShot.currentTime = 0;
                 me.sfxDarkShot.play();
             }
         };
@@ -150,6 +151,11 @@ class NerdScape extends Engine {
     }
 
     render(total_time) {
+        try{
+            this.music.play();
+        }catch (e) {
+            console.log("No interaction yet");
+        }
         //update engine time
         this.total_time = total_time;
         //move sprites
@@ -173,6 +179,7 @@ class NerdScape extends Engine {
                 this.saveGame();
             } else{
                 this.levelOverMenu.won = false;
+                this.sfxHeroDeath.currentTime = 0;
                 this.sfxHeroDeath.play();
             }
         }
@@ -207,6 +214,8 @@ class NerdScape extends Engine {
                 if(response.status !== "Failure" && response.save){
                     me.user = JSON.parse(response.save);
                     me.optionsMenu = new OptionsMenu(me);
+                    me.music.volume = me.user.musicVolume;
+                    me.updateSfxVolume();
                 }
             }
         });

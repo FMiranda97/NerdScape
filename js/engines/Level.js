@@ -290,6 +290,7 @@ class Level {
         for(let shot of this.playerSprite.shots){
             for (let enemy of this.enemySprites)
             if(enemy.active && shot.intersects(enemy)){
+                engine.sfxDyingEnemy.currentTime = 0;
                 engine.sfxDyingEnemy.play();
                 this.body_count++;
                 enemy.active = false;
@@ -356,6 +357,7 @@ class Level {
     updateWin(total_time, difficulty, engine) {
         this.timestamp = total_time;
         if (this.playerSprite.intersects(this.flagSprite) && this.won === false){
+            engine.sfxWin.currentTime = 0;
             engine.sfxWin.play();
             this.won = true;
             let beat_time = this.timestamp - this.init_time;

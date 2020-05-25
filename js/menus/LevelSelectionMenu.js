@@ -50,6 +50,7 @@ class LevelSelectionMenu {
             if(this.levelBoxes[i].mouseOverBoundingBox(ev)) break;
         }
         if(i+1 <= this.engine.user.maxLevel && i+1 <= MAX_LEVEL){
+            this.engine.sfxMenu.currentTime = 0;
             this.engine.sfxMenu.play();
             this.active = false;
             this.engine.level.generatePreset(i+1);
@@ -59,6 +60,7 @@ class LevelSelectionMenu {
 
     clickBack(ev) {
         if (this.back.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.currentTime = 0;
             this.engine.sfxMenu.play();
             this.active = false;
             this.engine.mainMenu.active = true;
