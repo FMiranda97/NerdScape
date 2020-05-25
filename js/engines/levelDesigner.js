@@ -456,19 +456,19 @@ class levelDesigner extends Engine {
                         img.src = CLOSED_CHEST_IMG;
                     }else img.src = resdir + type + ext;
                 }
-                if (type === "Player") {
+                if (type === "player") {
                     img.onclick = function (ev) {
                         me.level.addPlayerSprite(ev.target);
                     };
-                } else if (type === "Flag") {
+                } else if (type === "flag") {
                     img.onclick = function (ev) {
                         me.level.addFlagSprite(ev.target);
                     };
-                } else if (type === "Portal") {
+                } else if (type === "portal") {
                     img.onclick = function (ev) {
                         me.level.addPortalSprite(ev.target);
                     };
-                } else if (type === "Coin") {
+                } else if (type === "coin") {
                     img.onclick = function (ev) {
                         me.level.addCoinSprite(ev.target);
                     };

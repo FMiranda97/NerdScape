@@ -14,6 +14,8 @@ if($db){
             $results['status'] = "failure";
         }
     }
+}else{
+    $results['status'] = "Failure";
 }
 
 echo json_encode($results);
