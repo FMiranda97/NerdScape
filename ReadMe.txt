@@ -1,6 +1,9 @@
 Git Repository:
 https://github.com/FMiranda97/NerdScape
 
+Website will be up at:
+nerdscape.epizy.com
+
 Setup:
 1 - Create database schema named registration
 2 - Run SQL found in "Initial DB table creation.TXT"
