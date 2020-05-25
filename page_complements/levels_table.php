@@ -18,7 +18,7 @@ function create_table_levels($result){
 }
 
 
-$db = mysqli_connect('localhost', 'root', '', 'registration');
+include(__DIR__ . "/../actions/connect.php");
 $query = "SELECT name, levels.user_name, SUM(IF(vote = 1, 1, 0)) as upvotes, SUM(IF(vote = -1, 1, 0)) AS downvotes, id FROM levels LEFT JOIN votes ON levels.id = votes.level_id";
 
 

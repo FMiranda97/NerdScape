@@ -2,7 +2,7 @@
 
 
 session_start();
-$db = mysqli_connect("localhost", "root", "", "registration");
+include("connect.php");
 
 if($db && isset($_SESSION['username']) && isset($_POST['save'])){
     $username = mysqli_real_escape_string($db, $_SESSION['username']);

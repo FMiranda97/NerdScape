@@ -15,7 +15,7 @@ if (!isset($_POST['level_info'])) {
     array_push($result['error'], "No level info.");
 }
 
-$db = mysqli_connect('localhost', 'root', '', 'registration');
+include("connect.php");
 if(!$db){
     array_push($errors, "Server unreachable. Try again later.");
 }

@@ -1,6 +1,6 @@
---Admin with password "doe"
+
 insert into users(username, email, password_hash) values("Admin", "johndoe@mail.com", "ad695f53ae7569fb981fc95598e27e67");
---Add levels for main game
+
 insert into levels(level_info, name, user_name) values ("bkg:1
 x:0|y:0|w:800|h:450|src:resources/components/bkg0.png
 static:1
@@ -8,12 +8,12 @@ x:229|y:180|w:354|h:124|src:resources/components/img0.png
 enemies:0
 portals:0
 coins:1
-x:380.5|y:114.5|w:26|h:39|src:resources/components/Coin.png|value:1
+x:380.5|y:114.5|w:26|h:39|src:resources/components/coin.png|value:1
 chests:0
 player:1
-x:267|y:94|w:98|h:94|src:resources/components/Player.png
+x:267|y:94|w:98|h:94|src:resources/components/player.png
 flag:1
-x:446.5|y:97|w:109|h:94|src:resources/components/Flag.png|reward:100", "Main Game Level 1", "Admin");
+x:446.5|y:97|w:109|h:94|src:resources/components/flag.png|reward:100", "Main Game Level 1", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -83,18 +83,18 @@ iSx:0|iSy:0|Ax:0|Ay:0|t:1500|freq:0
 iSx:-5|iSy:0|Ax:-0.08|Ay:0|t:2000|freq:0
 iSx:5|iSy:0|Ax:0.2|Ay:0|t:5000|freq:0
 portals:2
-x:145|y:0|w:100|h:100|src:resources/components/Portal.png|id:0|destination_id:1
-x:152|y:265|w:100|h:100|src:resources/components/Portal.png|id:1|destination_id:0
+x:145|y:0|w:100|h:100|src:resources/components/portal.png|id:0|destination_id:1
+x:152|y:265|w:100|h:100|src:resources/components/portal.png|id:1|destination_id:0
 coins:3
-x:184|y:107|w:23|h:39|src:resources/components/Coin.png|value:1
-x:183|y:154|w:26|h:39|src:resources/components/Coin.png|value:1
-x:183|y:204|w:26|h:36|src:resources/components/Coin.png|value:1
+x:184|y:107|w:23|h:39|src:resources/components/coin.png|value:1
+x:183|y:154|w:26|h:39|src:resources/components/coin.png|value:1
+x:183|y:204|w:26|h:36|src:resources/components/coin.png|value:1
 chests:1
 x:25|y:305|w:59|h:48|src:resources/components/closed_chest.png|value:1
 player:1
-x:293|y:297|w:71|h:62|src:resources/components/Player.png
+x:293|y:297|w:71|h:62|src:resources/components/player.png
 flag:1
-x:690|y:255|w:109|h:104|src:resources/components/Flag.png|reward:100", "Main Game Level 4", "Admin");
+x:690|y:255|w:109|h:104|src:resources/components/flag.png|reward:100", "Main Game Level 4", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -113,9 +113,9 @@ portals:0
 coins:0
 chests:0
 player:1
-x:63.5|y:395|w:31|h:30|src:resources/components/Player.png
+x:63.5|y:395|w:31|h:30|src:resources/components/player.png
 flag:1
-x:714|y:358|w:64|h:56|src:resources/components/Flag.png|reward:100", "Main Game Level 5", "Admin");
+x:714|y:358|w:64|h:56|src:resources/components/flag.png|reward:100", "Main Game Level 5", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -133,9 +133,9 @@ portals:0
 coins:0
 chests:0
 player:1
-x:336|y:15|w:88|h:86|src:resources/components/Player.png
+x:336|y:15|w:88|h:86|src:resources/components/player.png
 flag:1
-x:330|y:331|w:98|h:116|src:resources/components/Flag.png|reward:100", "Main Game Level 6", "Admin");
+x:330|y:331|w:98|h:116|src:resources/components/flag.png|reward:100", "Main Game Level 6", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -152,15 +152,15 @@ iSx:0|iSy:0|Ax:0|Ay:0|t:1500|freq:3.5
 randomizer|x:621|y:257|w:169|h:100|src:resources/enemies/enm0.png|moves:1
 iSx:0|iSy:0|Ax:0|Ay:0|t:1500|freq:3.5
 portals:2
-x:433|y:3|w:90|h:90|src:resources/components/Portal.png|id:0|destination_id:1
-x:317|y:121|w:100|h:100|src:resources/components/Portal.png|id:1|destination_id:0
+x:433|y:3|w:90|h:90|src:resources/components/portal.png|id:0|destination_id:1
+x:317|y:121|w:100|h:100|src:resources/components/portal.png|id:1|destination_id:0
 coins:1
-x:53|y:144|w:66|h:81|src:resources/components/Coin.png|value:200
+x:53|y:144|w:66|h:81|src:resources/components/coin.png|value:200
 chests:0
 player:1
-x:336|y:15|w:88|h:77|src:resources/components/Player.png
+x:336|y:15|w:88|h:77|src:resources/components/player.png
 flag:1
-x:326|y:346|w:98|h:104|src:resources/components/Flag.png|reward:100", "Main Game Level 7", "Admin");
+x:326|y:346|w:98|h:104|src:resources/components/flag.png|reward:100", "Main Game Level 7", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -179,9 +179,9 @@ portals:0
 coins:0
 chests:0
 player:1
-x:354.5|y:317.5|w:79|h:69|src:resources/components/Player.png
+x:354.5|y:317.5|w:79|h:69|src:resources/components/player.png
 flag:1
-x:353.5|y:112|w:71|h:85|src:resources/components/Flag.png|reward:100", "Main Game Level 8", "Admin");
+x:353.5|y:112|w:71|h:85|src:resources/components/flag.png|reward:100", "Main Game Level 8", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -200,13 +200,13 @@ iSx:0.5|iSy:0|Ax:0|Ay:0|t:1000|freq:0
 iSx:-0.5|iSy:0|Ax:0|Ay:0|t:1000|freq:0
 portals:0
 coins:2
-x:29.5|y:138|w:15|h:26|src:resources/components/Coin.png|value:1
-x:11.5|y:228|w:17|h:26|src:resources/components/Coin.png|value:1
+x:29.5|y:138|w:15|h:26|src:resources/components/coin.png|value:1
+x:11.5|y:228|w:17|h:26|src:resources/components/coin.png|value:1
 chests:0
 player:1
-x:18|y:358|w:42|h:41|src:resources/components/Player.png
+x:18|y:358|w:42|h:41|src:resources/components/player.png
 flag:1
-x:736|y:348|w:64|h:56|src:resources/components/Flag.png|reward:100", "Main Game Level 9", "Admin");
+x:736|y:348|w:64|h:56|src:resources/components/flag.png|reward:100", "Main Game Level 9", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -222,16 +222,16 @@ iSx:0|iSy:0|Ax:0|Ay:0|t:1000|freq:0.25
 repeater:180|x:396|y:317.5|w:100|h:73|src:resources/enemies/enm1.png|moves:1
 iSx:0|iSy:0|Ax:0|Ay:0|t:750|freq:0.25
 portals:2
-x:25|y:320|w:73|h:73|src:resources/components/Portal.png|id:0|destination_id:1
-x:28|y:195|w:73|h:73|src:resources/components/Portal.png|id:1|destination_id:0
+x:25|y:320|w:73|h:73|src:resources/components/portal.png|id:0|destination_id:1
+x:28|y:195|w:73|h:73|src:resources/components/portal.png|id:1|destination_id:0
 coins:1
-x:676|y:211|w:23|h:35|src:resources/components/Coin.png|value:10
+x:676|y:211|w:23|h:35|src:resources/components/coin.png|value:10
 chests:1
 x:412|y:219|w:81|h:43|src:resources/components/closed_chest.png|value:200
 player:1
-x:112|y:341|w:52|h:57|src:resources/components/Player.png
+x:112|y:341|w:52|h:57|src:resources/components/player.png
 flag:1
-x:690|y:323|w:88|h:77|src:resources/components/Flag.png|reward:100", "Main Game Level 10", "Admin");
+x:690|y:323|w:88|h:77|src:resources/components/flag.png|reward:100", "Main Game Level 10", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -250,9 +250,9 @@ portals:0
 coins:0
 chests:0
 player:1
-x:342|y:4|w:58|h:62|src:resources/components/Player.png
+x:342|y:4|w:58|h:62|src:resources/components/player.png
 flag:1
-x:334|y:346.5|w:88|h:77|src:resources/components/Flag.png|reward:100", "Main Game Level 11", "Admin");
+x:334|y:346.5|w:88|h:77|src:resources/components/flag.png|reward:100", "Main Game Level 11", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -271,14 +271,14 @@ iSx:0|iSy:0|Ax:0|Ay:0|t:750|freq:0.5
 randomizer|x:554|y:282|w:123|h:100|src:resources/enemies/enm0.png|moves:1
 iSx:0|iSy:0|Ax:0|Ay:0|t:250|freq:0.25
 portals:2
-x:227|y:302|w:90|h:90|src:resources/components/Portal.png|id:0|destination_id:1
-x:14|y:26|w:90|h:90|src:resources/components/Portal.png|id:1|destination_id:0
+x:227|y:302|w:90|h:90|src:resources/components/portal.png|id:0|destination_id:1
+x:14|y:26|w:90|h:90|src:resources/components/portal.png|id:1|destination_id:0
 coins:0
 chests:0
 player:1
-x:23|y:326|w:71|h:62|src:resources/components/Player.png
+x:23|y:326|w:71|h:62|src:resources/components/player.png
 flag:1
-x:693|y:286|w:98|h:96|src:resources/components/Flag.png|reward:100", "Main Game Level 12", "Admin");
+x:693|y:286|w:98|h:96|src:resources/components/flag.png|reward:100", "Main Game Level 12", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -296,9 +296,9 @@ coins:0
 chests:1
 x:14.5|y:259.5|w:53|h:35|src:resources/components/closed_chest.png|value:200
 player:1
-x:7|y:389.5|w:42|h:37|src:resources/components/Player.png
+x:7|y:389.5|w:42|h:37|src:resources/components/player.png
 flag:1
-x:693.5|y:351.5|w:71|h:77|src:resources/components/Flag.png|reward:100", "Main Game Level 13", "Admin");
+x:693.5|y:351.5|w:71|h:77|src:resources/components/flag.png|reward:100", "Main Game Level 13", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -324,9 +324,9 @@ x:335|y:305|w:100|h:100|src:resources/components/closed_chest.png|value:1000
 x:438.5|y:367.5|w:59|h:43|src:resources/components/closed_chest.png|value:100
 x:268.5|y:367.5|w:59|h:39|src:resources/components/closed_chest.png|value:100
 player:1
-x:12|y:39|w:64|h:56|src:resources/components/Player.png
+x:12|y:39|w:64|h:56|src:resources/components/player.png
 flag:1
-x:717.5|y:32|w:71|h:62|src:resources/components/Flag.png|reward:100", "Main Game Level 14", "Admin");
+x:717.5|y:32|w:71|h:62|src:resources/components/flag.png|reward:100", "Main Game Level 14", "Admin");
 
 
 insert into levels(level_info, name, user_name) values ("bkg:1
@@ -339,30 +339,30 @@ x:0.5|y:127.5|w:823|h:53|src:resources/components/img0.png
 x:0.5|y:43.5|w:823|h:59|src:resources/components/img0.png
 enemies:0
 portals:13
-x:13.5|y:342|w:81|h:66|src:resources/components/Portal.png|id:0|destination_id:0
-x:358.5|y:343|w:73|h:66|src:resources/components/Portal.png|id:1|destination_id:0
-x:666.5|y:341|w:73|h:66|src:resources/components/Portal.png|id:2|destination_id:3
-x:18.5|y:246|w:81|h:66|src:resources/components/Portal.png|id:3|destination_id:6
-x:354.5|y:250|w:81|h:66|src:resources/components/Portal.png|id:4|destination_id:0
-x:671|y:249|w:66|h:66|src:resources/components/Portal.png|id:5|destination_id:0
-x:18.5|y:156|w:81|h:66|src:resources/components/Portal.png|id:6|destination_id:0
-x:355.5|y:153.5|w:81|h:73|src:resources/components/Portal.png|id:7|destination_id:0
-x:668.5|y:156.5|w:73|h:73|src:resources/components/Portal.png|id:8|destination_id:9
-x:21.5|y:60.5|w:81|h:73|src:resources/components/Portal.png|id:9|destination_id:0
-x:352.5|y:68|w:81|h:66|src:resources/components/Portal.png|id:10|destination_id:12
-x:664|y:62.5|w:90|h:73|src:resources/components/Portal.png|id:11|destination_id:0
-x:14.5|y:0|w:53|h:48|src:resources/components/Portal.png|id:12|destination_id:0
+x:13.5|y:342|w:81|h:66|src:resources/components/portal.png|id:0|destination_id:0
+x:358.5|y:343|w:73|h:66|src:resources/components/portal.png|id:1|destination_id:0
+x:666.5|y:341|w:73|h:66|src:resources/components/portal.png|id:2|destination_id:3
+x:18.5|y:246|w:81|h:66|src:resources/components/portal.png|id:3|destination_id:6
+x:354.5|y:250|w:81|h:66|src:resources/components/portal.png|id:4|destination_id:0
+x:671|y:249|w:66|h:66|src:resources/components/portal.png|id:5|destination_id:0
+x:18.5|y:156|w:81|h:66|src:resources/components/portal.png|id:6|destination_id:0
+x:355.5|y:153.5|w:81|h:73|src:resources/components/portal.png|id:7|destination_id:0
+x:668.5|y:156.5|w:73|h:73|src:resources/components/portal.png|id:8|destination_id:9
+x:21.5|y:60.5|w:81|h:73|src:resources/components/portal.png|id:9|destination_id:0
+x:352.5|y:68|w:81|h:66|src:resources/components/portal.png|id:10|destination_id:12
+x:664|y:62.5|w:90|h:73|src:resources/components/portal.png|id:11|destination_id:0
+x:14.5|y:0|w:53|h:48|src:resources/components/portal.png|id:12|destination_id:0
 coins:7
-x:627.5|y:14|w:21|h:26|src:resources/components/Coin.png|value:1
-x:552.5|y:12.5|w:23|h:29|src:resources/components/Coin.png|value:1
-x:480.5|y:14.5|w:23|h:29|src:resources/components/Coin.png|value:1
-x:392.5|y:16|w:21|h:26|src:resources/components/Coin.png|value:1
-x:297.5|y:11.5|w:23|h:29|src:resources/components/Coin.png|value:1
-x:206.5|y:12.5|w:21|h:29|src:resources/components/Coin.png|value:1
-x:113.5|y:16|w:23|h:26|src:resources/components/Coin.png|value:1
+x:627.5|y:14|w:21|h:26|src:resources/components/coin.png|value:1
+x:552.5|y:12.5|w:23|h:29|src:resources/components/coin.png|value:1
+x:480.5|y:14.5|w:23|h:29|src:resources/components/coin.png|value:1
+x:392.5|y:16|w:21|h:26|src:resources/components/coin.png|value:1
+x:297.5|y:11.5|w:23|h:29|src:resources/components/coin.png|value:1
+x:206.5|y:12.5|w:21|h:29|src:resources/components/coin.png|value:1
+x:113.5|y:16|w:23|h:26|src:resources/components/coin.png|value:1
 chests:0
 player:1
-x:119.5|y:366.5|w:47|h:37|src:resources/components/Player.png
+x:119.5|y:366.5|w:47|h:37|src:resources/components/player.png
 flag:1
-x:697|y:4.5|w:58|h:45|src:resources/components/Flag.png|reward:100", "Main Game Level 15", "Admin");
+x:697|y:4.5|w:58|h:45|src:resources/components/flag.png|reward:100", "Main Game Level 15", "Admin");
 

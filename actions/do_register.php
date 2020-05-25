@@ -7,7 +7,7 @@ $email = "";
 $errors = array();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'registration');
+include("connect.php");
 
 if(!$db){
     array_push($errors, "Server unreachable. Try again later.");

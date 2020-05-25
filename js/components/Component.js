@@ -104,7 +104,11 @@ class Component {
     }
 
     draw(ctx) {
-        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        try{
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        }catch (e) {
+            console.log("image not loaded yet");
+        }
     }
 
     reset() {
