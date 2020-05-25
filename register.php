@@ -5,7 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+
     <link rel="stylesheet" type="text/css" href="css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
 
 </head>
 
@@ -16,7 +18,7 @@
     </nav>
     <br>
 
-    <form method="post" action="register.php">
+    <form method="post" action="register.php" class="register">
         <?php include('page_complements/errors.php') ?>
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" value=""><br>

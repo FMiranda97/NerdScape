@@ -1,6 +1,9 @@
 article > h2{
     text-align: center;
 }
-article {
+.instrucoes {
     text-align: center;
+    color: white;
+    background-color: rgba(0.5, 0.5, 0.5, 0.7);
+    margin: 10 40 10 40px;
 }

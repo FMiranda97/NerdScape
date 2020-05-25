@@ -7,16 +7,19 @@ table {
 
 td, th {
     border: 1px solid #ddd;
+
     padding: 8px;
 }
-
+th > a{
+    color: white;
+}
 tr:nth-child(even){background-color: #f2f2f2;}
-
-tr:hover {background-color: #ddd;}
+tr:nth-child(odd){ background-color: #aaaaaa; }
+tr:hover {background-color: rgb(167, 136, 162);}
 
 th {
     padding-top: 12px;
     padding-bottom: 12px;
-    background-color: #4CAF50;
+    background-color: rgb(99, 113, 187);
     color: white;
 }
