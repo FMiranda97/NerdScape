@@ -11,6 +11,7 @@ if (isset($_GET['edit'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>NerdScape - Level Explorer</title>
 
@@ -58,14 +59,14 @@ if (isset($_GET['edit'])) {
 
 
 <body>
-    <div class="topnav">
+    <nav class="topnav">
         <a href="NerdScape.php">Main Game</a>
         <a href="levelDesigner.php">Level Designer</a>
         <a class="active">Level Explorer</a>
         <a href="scoreboards.php">Scoreboards</a>
         <a href="about.php">About</a>
         <a class="logout" href="?logout='1'">Log out</a>
-    </div>
+    </nav>
     <br>
 
     <canvas id="canvas" width="800" height="450" style="display: block; margin: auto; background: #dddddd"></canvas>
@@ -77,11 +78,11 @@ if (isset($_GET['edit'])) {
             <input type="text" name="search">
         </label>
         <label>
-            <input type="radio" name = "param" value="Name" checked>
+            <input type="radio" name="param" value="Name" checked>
             Name
         </label>
         <label>
-            <input type="radio" name = "param" value="Creator">
+            <input type="radio" name="param" value="Creator">
             Creator
         </label>
         <input type="submit" value="Go">
@@ -98,10 +99,11 @@ if (isset($_GET['edit'])) {
             </tr>
             <?php include("page_complements/levels_table.php") ?>
         </table>
-        <input type="submit" name = "page" value="First">
-        <input type="submit" name = "page" value="Previous">
-        <input type="submit" name = "page" value="Next">
-        <input type="submit" name = "page" value="Last">
+        <input type="submit" name="page" value="First">
+        <input type="submit" name="page" value="Previous">
+        <input type="submit" name="page" value="Next">
+        <input type="submit" name="page" value="Last">
     </form>
 </body>
+
 </html>

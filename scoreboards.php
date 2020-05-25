@@ -5,6 +5,7 @@ include('actions/do_logout.php');
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>NerdScape - Scoreboards</title>
 
@@ -18,14 +19,14 @@ include('actions/do_logout.php');
 
 
 <body>
-    <div class="topnav">
+    <nav class="topnav">
         <a href="NerdScape.php">Main Game</a>
         <a href="levelDesigner.php">Level Designer</a>
         <a href="levelExplorer.php">Level Explorer</a>
         <a class="active">Scoreboards</a>
         <a href="about.php">About</a>
         <a class="logout" href="?logout='1'">Log out</a>
-    </div>
+    </nav>
     <br>
 
     <!--    level explorer filters-->
@@ -34,15 +35,15 @@ include('actions/do_logout.php');
             <input type="text" name="search">
         </label>
         <label>
-            <input type="radio" name = "param" value="Name" checked>
+            <input type="radio" name="param" value="Name" checked>
             Name
         </label>
         <label>
-            <input type="radio" name = "param" value="Creator">
+            <input type="radio" name="param" value="Creator">
             Creator
         </label>
         <label>
-            <input type="radio" name = "param" value="Player">
+            <input type="radio" name="param" value="Player">
             Player
         </label>
         <input type="submit" value="Go">
@@ -60,10 +61,11 @@ include('actions/do_logout.php');
             </tr>
             <?php include("page_complements/scores_table.php") ?>
         </table>
-        <input type="submit" name = "page" value="First">
-        <input type="submit" name = "page" value="Previous">
-        <input type="submit" name = "page" value="Next">
-        <input type="submit" name = "page" value="Last">
+        <input type="submit" name="page" value="First">
+        <input type="submit" name="page" value="Previous">
+        <input type="submit" name="page" value="Next">
+        <input type="submit" name="page" value="Last">
     </form>
 </body>
+
 </html>
