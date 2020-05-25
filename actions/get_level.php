@@ -10,7 +10,7 @@ if (isset($_POST['play'])) {
 }
 
 if ($results['op'] !== 'none') {
-    $db = mysqli_connect('localhost', 'root', '', 'registration');
+    include("connect.php");
     $query = "SELECT level_info from levels where id = $results[level]";
     if($db) $qr = mysqli_query($db, $query);
     if($qr) $results['level_data'] = $qr->fetch_assoc()['level_info'];

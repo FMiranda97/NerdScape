@@ -2,7 +2,7 @@
 
 $results = array('status' => 'success', 'level_data' => '');
 
-$db = mysqli_connect('localhost', 'root', '', 'registration');
+include("connect.php");
 if($db){
     $query = "SELECT level_info, id from levels where name = 'Main Game Level $_POST[level]' and user_name = 'Admin'";
     $qr = mysqli_query($db, $query);

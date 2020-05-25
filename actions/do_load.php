@@ -2,7 +2,7 @@
 
 
 session_start();
-$db = mysqli_connect('localhost', 'root', '', 'registration');
+include("connect.php");
 $response = array("status"=>"Success", "save"=>"");
 
 if($db && isset($_SESSION['username'])){

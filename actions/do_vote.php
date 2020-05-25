@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', '', 'registration');
+include("connect.php");
 //check if must vote
 if($db && isset($_GET['up']) || isset($_GET['down'])){
     $username = mysqli_real_escape_string($db, $_SESSION['username']);

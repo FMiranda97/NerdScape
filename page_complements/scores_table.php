@@ -15,7 +15,8 @@ function create_table_scores($result){
     return $cnt;
 }
 
-$db = mysqli_connect('localhost', 'root', '', 'registration');
+include(__DIR__ . "/../actions/connect.php");
+
 $query = "select name, levels.user_name as creator, score.user_name as player, completion_time, collected_coins, enemies_killed  from levels, score where levels.id = score.level_id";
 
 //choose search query
