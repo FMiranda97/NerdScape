@@ -278,28 +278,28 @@ class levelDesigner extends Engine {
         //player
         this.playerImg = document.createElement('img');
         docFrag.append(this.playerImg);
-        this.ajaxUnique(this.playerImg, "Player", resdir, ext);
+        this.ajaxUnique(this.playerImg, "player", resdir, ext);
 
 
         //flag
         this.flagImg = document.createElement('img');
         docFrag.append(this.flagImg);
-        this.ajaxUnique(this.flagImg, "Flag", resdir, ext);
+        this.ajaxUnique(this.flagImg, "flag", resdir, ext);
 
         //portal
         this.portalImg = document.createElement('img');
         docFrag.append(this.portalImg);
-        this.ajaxUnique(this.portalImg, "Portal", resdir, ext);
+        this.ajaxUnique(this.portalImg, "portal", resdir, ext);
 
         //coin
         this.coinImg = document.createElement('img');
         docFrag.append(this.coinImg);
-        this.ajaxUnique(this.coinImg, "Coin", resdir, ext);
+        this.ajaxUnique(this.coinImg, "coin", resdir, ext);
 
         //chest
         this.chestImg = document.createElement('img');
         docFrag.append(this.chestImg);
-        this.ajaxUnique(this.chestImg, "Chest", resdir, ext);
+        this.ajaxUnique(this.chestImg, "chest", resdir, ext);
 
         //append to document
         unique_container.appendChild(docFrag);
