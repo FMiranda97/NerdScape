@@ -92,14 +92,17 @@ class OptionsMenu {
 
     clickDifficulty(ev) {
         if (this.easy.mouseOverBoundingBox(ev) && this.easy.clickable) {
+            this.engine.sfxMenu.currentTime = 0;
             this.engine.sfxMenu.play();
             this.engine.user.difficulty = 1;
         }
         if (this.medium.mouseOverBoundingBox(ev) && this.medium.clickable) {
+            this.engine.sfxMenu.currentTime = 0;
             this.engine.sfxMenu.play();
             this.engine.user.difficulty = 2;
         }
         if (this.hard.mouseOverBoundingBox(ev) && this.hard.clickable) {
+            this.engine.sfxMenu.currentTime = 0;
             this.engine.sfxMenu.play();
             this.engine.user.difficulty = 3;
         }
@@ -107,6 +110,7 @@ class OptionsMenu {
 
     clickBack(ev) {
         if (this.back.mouseOverBoundingBox(ev)) {
+            this.engine.sfxMenu.currentTime = 0;
             this.engine.sfxMenu.play();
             this.active = false;
             this.callerMenu.active = true;

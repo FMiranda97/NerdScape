@@ -23,6 +23,7 @@ class Chest extends Component{
 
     collect(user, sfx){
         if(this.active && user.canLockpick){
+            sfx.currentTime = 0;
             sfx.play();
             this.active = false;
             return this.value;

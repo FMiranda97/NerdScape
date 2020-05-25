@@ -97,6 +97,7 @@ class NerdScape extends Engine {
             me.clickSprite(ev);
             if (me.level.active && me.user.canRange) {
                 me.level.playerSprite.shoot(ev, me.user);
+                me.sfxDarkShot.currentTime = 0;
                 me.sfxDarkShot.play();
             }
         };
@@ -178,6 +179,7 @@ class NerdScape extends Engine {
                 this.saveGame();
             } else{
                 this.levelOverMenu.won = false;
+                this.sfxHeroDeath.currentTime = 0;
                 this.sfxHeroDeath.play();
             }
         }

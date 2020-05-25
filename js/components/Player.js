@@ -90,6 +90,7 @@ class Player extends Component {
         }
         if (this.jumpFramesWindow === 5 && (user.canJump && !canD && !this.hasJumped || user.canDouble && this.hasJumped && !this.hasDoubled)) {
             this.Sy = JUMP_SPEED * this.height;
+            sfx.currentTime = 0;
             sfx.play();
             if (!this.hasJumped)
                 this.hasJumped = true;

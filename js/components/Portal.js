@@ -32,6 +32,7 @@ class Portal extends Component{
 
     port(target, sfx){
         //align portal and player mass centers
+        sfx.currentTime = 0;
         sfx.play();
         target.x = this.x + this.width/2 - target.width/2;
         target.y = this.y + this.height/2 - target.height/2;

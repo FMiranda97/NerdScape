@@ -48,6 +48,7 @@ class Movement {
         if(this.freq > 0){
             if(this.actiont === 0) {
                 enemy.doAction(player);
+                sfxLightShot.currentTime = 0;
                 sfxLightShot.play();
             }
             this.actiont += time_diff * difficulty;
