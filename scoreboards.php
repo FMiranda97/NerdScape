@@ -62,10 +62,12 @@ include('actions/do_logout.php');
             </tr>
             <?php include("page_complements/scores_table.php") ?>
         </table>
-        <input type="submit" name="page" value="First">
-        <input type="submit" name="page" value="Previous">
-        <input type="submit" name="page" value="Next">
-        <input type="submit" name="page" value="Last">
+        <div class="center">
+            <input type="submit" name="page" value="First">
+            <input type="submit" name="page" value="Previous">
+            <input type="submit" name="page" value="Next">
+            <input type="submit" name="page" value="Last">
+        </div>
     </form>
 </body>
 
