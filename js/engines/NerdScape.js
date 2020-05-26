@@ -207,6 +207,7 @@ class NerdScape extends Engine {
                 if(response.status !== "Failure" && response.save){
                     me.user = JSON.parse(response.save);
                     me.optionsMenu = new OptionsMenu(me);
+                    me.shopMenu = new ShopMenu(me);
                     me.music.volume = me.user.musicVolume;
                     me.updateSfxVolume();
                 }
