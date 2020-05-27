@@ -71,9 +71,9 @@ class Component {
                 for (let j = Topo; j <=  Fundo; j++) {
                     let pixels1 = (j - Math.round(this.y)) * Math.round(this.width) + (i - Math.round(this.x));
                     // noinspection JSUnresolvedVariable
-                    if((this instanceof Player || this instanceof Enemy) && this.movedBack) pixels1 = (j - Math.round(this.y)) * Math.round(this.width) + (this.width - i - Math.round(this.x));
+                    if((this instanceof Player || this instanceof Enemy) && this.movedBack) pixels1 = (j - Math.round(this.y)) * Math.round(this.width) + this.width - (i - Math.round(this.x));
                     let pixels2 = (j - Math.round(target.y)) * Math.round(target.width) + (i - Math.round(target.x));
-                    if((target instanceof Player || target instanceof Enemy) && target.movedBack) pixels2 = (j - Math.round(target.y)) * Math.round(target.width) + (target.width - i - Math.round(target.x));
+                    if((target instanceof Player || target instanceof Enemy) && target.movedBack) pixels2 = (j - Math.round(target.y)) * Math.round(target.width) + target.width - (i - Math.round(target.x));
                     if (thisPx[pixels1 * 4 + 3] > 0 && targetPx[pixels2 * 4 + 3] > 0) {
                         return true;
                     }

@@ -342,15 +342,27 @@ class Level {
     updateLife() {
         //check if fell through map
         this.alive = this.playerSprite.y < this.ctx.canvas.height;
+        if(!this.alive){
+            console.log("rip");
+        }
         //check if touched enemy or a projectile
         for (let i = 0; i < this.enemySprites.length && this.alive; i++) {
             if(!this.enemySprites[i].active) continue;
             this.alive = !this.enemySprites[i].intersects(this.playerSprite);
+            if(!this.alive){
+                console.log("rip");
+            }
             if (this.enemySprites[i].shots !== undefined) {
                 for (let j = 0; j < this.enemySprites[i].shots.length && this.alive; j++) {
                     this.alive = !this.enemySprites[i].shots[j].intersects(this.playerSprite);
+                    if(!this.alive){
+                        console.log("rip");
+                    }
                 }
             }
+        }
+        if(!this.alive){
+            console.log("rip");
         }
     }
 
