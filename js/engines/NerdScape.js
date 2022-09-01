@@ -187,6 +187,7 @@ class NerdScape extends Engine {
 
     saveGame() {
         let save = JSON.stringify(this.user);
+        console.log(save);
         $.ajax({
             type: "post",
             url: "actions/do_save.php",

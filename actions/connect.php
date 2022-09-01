@@ -1,2 +1,2 @@
 <?php
-$db = mysqli_connect("localhost", "root", "", "registration");
+$db = mysqli_connect("mysql", "nerd", "nerdpass", "nerdbase");
