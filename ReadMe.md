@@ -1,6 +1,6 @@
 # Nerdscape
 ##  Single player game with leaderboards
-This is a simple JavaScript game in a PHP website. You play as a nerd who's trying his best to avoid any light while rushing towards his PC. This also includes a leaderboards page and a level designer where you can create your own level, decide on the location of structures and the movimentations that monsters should take around the map.
+This is a simple JavaScript game in a PHP website. You play as a nerd who feeds on RedBull and tries his best to avoid any light while rushing towards his PC. This also includes a leaderboards page and a level designer where you can create your own level, decide on the location of structures and the movimentations that monsters should take around the map.
 
 It was written in pure PHP + JavaScript with a MySQL database and has been dockerized so you can easily preview it. If you have Docker and git installed you can easily run this website locally by cloning the repository and activating the docker-compose file. To do that open a terminal and run the following commands:
  - git clone https://github.com/FMiranda97/NerdScape.git
