@@ -4,6 +4,7 @@ This is a simple JavaScript game in a PHP website. You play as a nerd who feeds 
 
 It was written in pure PHP + JavaScript with a MySQL database and has been dockerized so you can easily preview it. If you have Docker and git installed you can easily run this website locally by cloning the repository and activating the docker-compose file. To do that open a terminal and run the following commands:
  - git clone https://github.com/FMiranda97/NerdScape.git
+ - cd NerdScape
  - docker compose up -d
 
 It may take a minute to load up the database, even after Docker says it's up and running, please be patient. Once it's ready you can view the website at http://localhost/NerdScape.php.
